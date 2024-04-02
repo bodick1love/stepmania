@@ -1,5 +1,7 @@
+# Stepmania Repository
+
 Clone the repository:
-git clone [<repository_url>](https://github.com/bodick1love/stepmania)
+git clone repository_url
 
 Create a virtual environment:
 python -m venv venv
@@ -25,10 +27,9 @@ python manage.py createsuperuser
 
 Run the development server:
 python manage.py runserver
-
 The server will start running at http://localhost:8000.
 
-Usage
+## Usage
 1. Access the admin interface by navigating to http://localhost:8000/admin and logging in with the superuser credentials created earlier.
 2. Use the admin interface to manage products, orders, etc.
 3. Access the front-end of the store by navigating to http://localhost:8000.
