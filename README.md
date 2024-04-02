@@ -17,7 +17,7 @@
      ```
    - On macOS and Linux:
      ```
-     source env/bin/activate
+     source venv/bin/activate
      ```
 
 4. Install dependencies:
