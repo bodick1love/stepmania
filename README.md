@@ -1,7 +1,7 @@
 # Stepmania Repository
 
 1. Clone the repository:
-   git clone <repository_url>
+   git clone github.com/bodick1love/stepmania
 
 2. Create a virtual environment:
    python -m venv venv
