@@ -1,0 +1,64 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <section class="catalogue">
+
+            <div class="filters">
+                
+                <div class="filter">
+                    <h2 class="filter-title">Price</h2>
+                    <label class="price-slider">
+                        <h3>0</h3>
+                        <input type="range">
+                        <h3>{{ max_price }}$</h3>
+                    </label>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="filter">
+                    <h2 class="filter-title">Category</h2>
+                    <ul>
+                        {% for category in categories %}
+                            <li><input type="checkbox"> {{ category.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="filter">
+                    <h2 class="filter-title">Brand</h2>
+                    <ul>
+                        {% for brand in brands %}
+                            <li><input type="checkbox"> {{ brand.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="separator"></div>
+                
+            </div>
+
+            <div class="vertical-separator" id="vertical-separator-1"></div>
+
+            <div class="items">
+                {% for s, l in shoes_logo %}
+
+                    {% if s.availability %}
+                        <div class="item">
+                            <img src="../../..{{ l.image.url }}" alt="logo">
+                            <a href="">{{s.brand.name}} {{s.model}}</a>
+
+                            <div class="price-action">
+                                <p>{{s.price}}$</p>
+                                <button>buy</button>
+                            </div>
+
+                        </div>
+                    {% endif %}
+                
+                {% endfor %}
+            </div>
+
+    </section>
+{% endblock content %}

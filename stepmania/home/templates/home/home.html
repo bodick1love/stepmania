@@ -1,0 +1,86 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="slider">
+
+        <div class="container">
+
+        </div>
+
+    </section>
+
+    <section class="about">
+
+        <div class="container">
+            <h1 class="title">About Us</h1>
+
+            <div class="row">
+                <div class="desc">
+
+                    <h2>Sneaker Variety</h2>
+
+                    <p>Explore diverse styles at stepmania.
+                        Our collection of sneakers caters to every taste.
+                        Whether you prefer classic looks or the latest
+                        trends, we've got the perfect pair for you. Step
+                        into comfort and style – discover your fit today.</p>
+
+                </div>
+                <img src="{% static 'home/img/range.png' %}" alt="img">
+                <div class="placeholder"></div>
+            </div>
+
+            <div class="row">
+                <div class="placeholder"></div>
+                <img src="{% static 'home/img/fast-delivery.png' %}" alt="img">
+                <div class="desc">
+
+                    <h2>Rapid Delivery</h2>
+
+                    <p>Fast, reliable, and hassle-free – that's how we
+                        deliver your favorite sneakers at stepmania.
+                        Order now and experience swift doorstep
+                        delivery, ensuring your new kicks are in your
+                        hands in record time. Your style journey
+                        begins with a click.</p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="desc">
+
+                    <h2>Stay in the Loop</h2>
+
+                    <p>Connect with stepmania for the latest updates.
+                        Follow us on social media to be the first to know
+                        about new arrivals, exclusive deals, and more.
+                        Your style, our updates – let's keep it simple and
+                        stylish.</p>
+
+                </div>
+                <img src="{% static 'home/img/networking.png' %}" alt="img">
+                <div class="placeholder"></div>
+            </div>
+
+            <div class="row">
+                <div class="placeholder"></div>
+                <img src="{% static 'home/img/flexibility.png' %}" alt="img">
+                <div class="desc">
+
+                    <h2>Easy Returns</h2>
+
+                    <p>No fuss, no stress. Enjoy easy returns at
+                        stepmania. Not loving your purchase?
+                        We've got a hassle-free return process to make
+                        things simple. Your satisfaction matters, and
+                        we're here to keep it easy for you.</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock content %}

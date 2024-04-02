@@ -1,0 +1,9 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    <div class="redirect">
+        <h2>You've logged out</h2>
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In again</a>
+        </small>
+    </div>
+{% endblock content %}
