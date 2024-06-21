@@ -1,0 +1,29 @@
+{% load static %}
+<header>
+    <nav>
+        <img class="logo" src="{% static 'home/img/sneaker.png' %}" alt="img">
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <!--
+            <li><a href="">About Us</a></li>
+            -->
+            <li><a href="{% url 'catalogue' %}">Catalogue</a></li>
+        </ul>
+    </nav>
+    <div class="commerce">
+        <div class="search-field">
+            <img src="{% static 'home/img/loupe.png' %}" alt="img">
+            <input type="text" placeholder="search" class="input-field">
+        </div>
+        <img src="{% static 'home/img/cart.png' %}" alt="img">
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'home/img/user.png' %}" alt="img">
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}">
+                <img src="{% static 'home/img/user.png' %}" alt="img">
+            </a>
+        {% endif %}
+    </div>
+</header>

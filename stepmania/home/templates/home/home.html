@@ -1,0 +1,145 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="slider">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                {% for item in carousel_items %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                {% endfor %}
+            </ol>
+
+            <div class="carousel-inner">
+                {% for item in carousel_items %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img class="d-block w-100" src="{{ item.image.url }}" alt="{{ item.title }}">
+                            <!--
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ item.title }}</h5>
+                            <p>{{ item.description }}</p>
+                            {% if item.link %}
+                                <a href="{{ item.link }}" class="btn btn-primary">Learn More</a>
+                            {% endif %}
+                            </div>
+                            -->
+                    </div>
+                {% endfor %}
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.354a.5.5 0 0 1 0 .707L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                     <path fill-rule="evenodd" d="M6.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L12.293 8 6.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="bestsellers">
+
+        <h1 class="title">Our bestsellers</h1>
+
+        <div class="showcase">
+                {% for s, l in bestsellers %}
+
+                    {% if s.availability %}
+                        <div class="item">
+                            <img src="../..{{ l.image.url }}" alt="logo">
+                            <a href="">{{s.brand.name}} {{s.model}}</a>
+
+                            <div class="price-action">
+                                <p>{{s.price}}$</p>
+                                <button>buy</button>
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+    </section>
+
+    <section class="about">
+
+        <div class="container">
+            <h1 class="title">About Us</h1>
+
+            <div class="row">
+                <div class="desc">
+
+                    <h2>Sneaker Variety</h2>
+
+                    <p>Explore diverse styles at stepmania.
+                        Our collection of sneakers caters to every taste.
+                        Whether you prefer classic looks or the latest
+                        trends, we've got the perfect pair for you. Step
+                        into comfort and style – discover your fit today.</p>
+
+                </div>
+                <img src="{% static 'home/img/range.png' %}" alt="img">
+                <div class="placeholder"></div>
+            </div>
+
+            <div class="row">
+                <div class="placeholder"></div>
+                <img src="{% static 'home/img/fast-delivery.png' %}" alt="img">
+                <div class="desc">
+
+                    <h2>Rapid Delivery</h2>
+
+                    <p>Fast, reliable, and hassle-free – that's how we
+                        deliver your favorite sneakers at stepmania.
+                        Order now and experience swift doorstep
+                        delivery, ensuring your new kicks are in your
+                        hands in record time. Your style journey
+                        begins with a click.</p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="desc">
+
+                    <h2>Stay in the Loop</h2>
+
+                    <p>Connect with stepmania for the latest updates.
+                        Follow us on social media to be the first to know
+                        about new arrivals, exclusive deals, and more.
+                        Your style, our updates – let's keep it simple and
+                        stylish.</p>
+
+                </div>
+                <img src="{% static 'home/img/networking.png' %}" alt="img">
+                <div class="placeholder"></div>
+            </div>
+
+            <div class="row">
+                <div class="placeholder"></div>
+                <img src="{% static 'home/img/flexibility.png' %}" alt="img">
+                <div class="desc">
+
+                    <h2>Easy Returns</h2>
+
+                    <p>No fuss, no stress. Enjoy easy returns at
+                        stepmania. Not loving your purchase?
+                        We've got a hassle-free return process to make
+                        things simple. Your satisfaction matters, and
+                        we're here to keep it easy for you.</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock content %}
