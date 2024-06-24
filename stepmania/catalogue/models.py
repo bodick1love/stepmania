@@ -46,9 +46,12 @@ class OrderAndShoes(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, default=1)
     shoes = models.ForeignKey(Shoes, on_delete=models.CASCADE, default=1)
 
+<<<<<<< HEAD
     def __str__(self):
         return f'Shoes: {self.shoes.model} are in order: {self.order.address}'
 
+=======
+>>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 
 class ShoesPhoto(models.Model):
     image = models.ImageField(upload_to='shoes_photo/')

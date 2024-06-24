@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db.models import Count
 from django.shortcuts import render
 from .models import CarouselItem
@@ -23,3 +24,10 @@ def home(request):
     }
 
     return render(request, 'home/home.html', context=context)
+=======
+from django.shortcuts import render
+
+
+def home(request):
+    return render(request, 'home/home.html')
+>>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
