@@ -1,6 +1,5 @@
 from django.db import models
 
-<<<<<<< HEAD
 
 # Create your models here.
 class CarouselItem(models.Model):
@@ -10,6 +9,3 @@ class CarouselItem(models.Model):
 
     def __str__(self):
         return self.title
-=======
-# Create your models here.
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49

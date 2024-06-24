@@ -41,10 +41,7 @@ nav {
     text-decoration: none;
     margin-left: 20px;
     color: white;
-<<<<<<< HEAD
     font-weight: bold;
-=======
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 }
 
 .commerce {
@@ -91,8 +88,6 @@ nav {
     color: #aaaaaa;
 }
 
-<<<<<<< HEAD
-
 /* Home */
 .slider {
     height: calc(100vh - 220px);
@@ -112,19 +107,12 @@ nav {
     height: 2rem;
 }
 
-.bestsellers {
-
-}
-
 .showcase {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-
-=======
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 /* Feedback */
 .feedback {
     width: 100%;
@@ -226,24 +214,12 @@ nav {
     color: #aaaaaa;
 }
 
-<<<<<<< HEAD
-=======
-.slider {
-    height: calc(100vh - 70px);
-    background: url('../img/slider-bg.jpg') no-repeat center center/cover;
-}
-
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 /* About us */
 .title {
     text-align: center;
     font-size: 36px;
     font-weight: bold;
-<<<<<<< HEAD
     margin: 50px 0 30px 0;
-=======
-    margin: 50px 0 80px 0;
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 }
 
 .row {
@@ -307,15 +283,9 @@ nav {
 }
 
 .item {
-<<<<<<< HEAD
     height: 350px;
     width: 250px;
     margin: 15px;
-=======
-    height: 380px;
-    width: 280px;
-    margin: 10px;
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
@@ -327,11 +297,7 @@ nav {
 
 .item img{
     width: 100%;
-<<<<<<< HEAD
     height: 200px;
-=======
-    height: 250px;
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 }
 
 .item a{
@@ -413,15 +379,9 @@ nav {
 
 
 /* Login / Register */
-
 .content-section{
-<<<<<<< HEAD
     width: 35%;
     margin: 8% auto;
-=======
-    width: 40%;
-    margin: 50px auto;
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
     padding: 40px 20px;
     border: 2px solid #dadada;
     border-radius: 10px;
@@ -429,16 +389,16 @@ nav {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+#id_password1_helptext{
+    margin-left: 20px;
+}
+
 .form-fields div{
     margin: 40px auto;
 }
 
 .form-group button{
-<<<<<<< HEAD
     margin: 20px 0;
-=======
-    margin-top: 40px;
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
 }
 
 fieldset .form-text{
@@ -451,12 +411,7 @@ fieldset .form-text{
 }
 
 .redirect {
-<<<<<<< HEAD
-    text-align: center;5
-=======
     text-align: center;
-    margin-top: 10px;
->>>>>>> e48776e10b74c39156b7ccd96cae1124b8884d49
     font-size: 16px;
 }
 
