@@ -10,6 +10,8 @@ def home(request):
     # Annotate each shoe with the number of orders it has
     shoes_with_order_count = Shoes.objects.annotate(order_count=Count('orderandshoes'))
 
+    shoes_with_order_count = shoes_with_order_count.filter(availability=True)
+
     # Order the queryset by order count in descending order and get the top 4 shoes
     top_4_shoes = shoes_with_order_count.order_by('-order_count', '-price')[:4]
 

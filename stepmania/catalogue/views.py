@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from catalogue.models import Brand, Category, Shoes, ShoesPhoto
+from .models import Brand, Category, Shoes, ShoesPhoto
 
 
 def catalogue(request):

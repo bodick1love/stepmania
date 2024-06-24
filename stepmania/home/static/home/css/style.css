@@ -270,6 +270,38 @@ nav {
     flex: 0 0 20%;
 }
 
+#price-slider {
+    margin-top: 50px;
+}
+
+.noUi-connect {
+    background-color: #007bff;
+}
+
+/* Target the slider itself */
+.noUi-horizontal {
+    height: 10px; /* Decrease the height */
+}
+
+/* Target the handles */
+.noUi-horizontal .noUi-handle {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
+.noUi-horizontal .noUi-handle::before, .noUi-horizontal .noUi-handle::after{
+    width: 1px;
+    height: 14px;
+    left: 6px;
+    top: 3px;
+}
+
+.noUi-horizontal .noUi-handle::after{
+    left: 11px;
+}
+
 .vertical-separator {
     margin: 0 50px;
     width: 1px;
@@ -356,12 +388,14 @@ nav {
     align-items: center;
 }
 
-.price-slider h3{
+#min-price, #max-price{
     margin: 0;
-    font-size: 16px;
+    width: 80px;
+    text-align: right;
+    padding: 0 5px;
 }
 
-.price-slider input{
+.price-slider input:nth-child(2){
     margin: 0 10px;
 }
 

@@ -3,36 +3,39 @@
     <section class="catalogue">
 
             <div class="filters">
-                
+
                 <div class="filter">
                     <h2 class="filter-title">Price</h2>
-                    <label class="price-slider">
-                        <h3>0</h3>
-                        <input type="range">
-                        <h3>{{ max_price }}$</h3>
-                    </label>
+                    <div id="price-slider"></div>
                 </div>
 
                 <div class="separator"></div>
 
-                <div class="filter">
+                <div class="filter" id="category-filter">
                     <h2 class="filter-title">Category</h2>
                     <ul>
                         {% for category in categories %}
-                            <li><input type="checkbox"> {{ category.name }}</li>
+                            <li><input type="checkbox" onchange="filterProducts()" checked>{{ category.name }}</li>
                         {% endfor %}
                     </ul>
                 </div>
 
                 <div class="separator"></div>
 
-                <div class="filter">
+                <div class="filter" id="brand-filter">
                     <h2 class="filter-title">Brand</h2>
                     <ul>
                         {% for brand in brands %}
-                            <li><input type="checkbox"> {{ brand.name }}</li>
+                            <li><input type="checkbox" onchange="filterProducts()" checked>{{ brand.name }}</li>
                         {% endfor %}
                     </ul>
+                </div>
+
+                <div class="separator"></div>
+
+                <div class="filter" id="availability-filter">
+                    <h2 class="filter-title">Availability</h2>
+                    <input type="checkbox" onchange="filterProducts()">Only available</input>
                 </div>
 
                 <div class="separator"></div>
@@ -44,8 +47,12 @@
             <div class="items">
                 {% for s, l in shoes_logo %}
 
-                    {% if s.availability %}
-                        <div class="item">
+                        <div class="item {% if not s.availability %}{{unavailable}}{% endif %}"
+                             data-category="{{s.category.name}}"
+                             data-brand="{{s.brand.name}}"
+                             data-price="{{s.price}}"
+                             data-availability="{{s.availability}}"
+                        >
                             <img src="../../..{{ l.image.url }}" alt="logo">
                             <a href="">{{s.brand.name}} {{s.model}}</a>
 
@@ -55,10 +62,49 @@
                             </div>
 
                         </div>
-                    {% endif %}
                 
                 {% endfor %}
             </div>
 
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var slider = document.getElementById('price-slider');
+            var minPrice = 0;
+            var maxPrice = 300;
+            var tooltips = [];
+
+            noUiSlider.create(slider, {
+                start: [minPrice, maxPrice],
+                connect: true,
+                range: {
+                    'min': minPrice,
+                    'max': maxPrice
+                },
+                tooltips: [true, true],
+                format: {
+                    to: function(value) {
+                        return value.toFixed(2);
+                    },
+                    from: function(value) {
+                        return Number(value);
+                    }
+                }
+            });
+
+            slider.querySelectorAll('.noUi-tooltip').forEach(function(tooltip) {
+                tooltip.addEventListener('click', function() {
+                    var currentValue = this.innerHTML.trim(); // Get current tooltip value
+                    this.contentEditable = true; // Allow editing directly in the tooltip
+
+                    console.log("editable")
+                });
+            });
+
+            slider.noUiSlider.on('update', function() {
+                filterProducts();
+            });
+        });
+    </script>
 {% endblock content %}
