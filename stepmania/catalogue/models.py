@@ -7,14 +7,14 @@ class Brand(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     def __str__(self):
-        return f'Brand: {self.name};'
+        return f'Brand: {self.name}'
 
 
 class Category(models.Model):
     name = models.CharField(max_length=50, null=False)
 
     def __str__(self):
-        return f'Category: {self.name};'
+        return f'Category: {self.name}'
 
 
 class Shoes(models.Model):
@@ -26,8 +26,8 @@ class Shoes(models.Model):
     description = models.TextField(max_length=300)
 
     def __str__(self):
-        return f'{self.brand}\n {self.category}\n Model: {self.model};\n Price: {self.price}$;\n' \
-               f'Availability: {self.availability};\n Description: {self.description};'
+        return f'{self.brand} | {self.category} | Model: {self.model} | Price: {self.price}$ | ' \
+               f'Availability: {self.availability} | Description: {self.description}'
 
 
 class Order(models.Model):
@@ -38,8 +38,8 @@ class Order(models.Model):
     delivery_price = models.FloatField(null=False)
 
     def __str__(self):
-        return f'{self.client}\n Date: {self.registration_date}\n Address: {self.address}\n' \
-               f'Payment: {"YES" if self.payment == True else "NO"}\n Delivery price: {self.delivery_price}'
+        return f'Order for: {self.client} | Date: {self.registration_date} | Address: {self.address} | ' \
+               f'Payment: {"YES" if self.payment == True else "NO"} | Delivery price: {self.delivery_price}'
 
 
 class OrderAndShoes(models.Model):

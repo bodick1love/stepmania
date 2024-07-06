@@ -89,7 +89,7 @@ nav {
 }
 
 /* Home */
-.slider {
+.carousel {
     height: calc(100vh - 220px);
     /*
     width: 80vw;
@@ -97,14 +97,8 @@ nav {
     */
 }
 
-.carousel, .carousel-inner, .carousel-item, .carousel-item img{
+.carousel-inner, .carousel-item, .carousel-item img{
     height: 100%;
-}
-
-
-.carousel-control-prev-icon svg, .carousel-control-next-icon svg {
-    width: 2rem;  /* Adjust the size of the SVG icon */
-    height: 2rem;
 }
 
 .showcase {
@@ -278,12 +272,10 @@ nav {
     background-color: #007bff;
 }
 
-/* Target the slider itself */
 .noUi-horizontal {
-    height: 10px; /* Decrease the height */
+    height: 10px;
 }
 
-/* Target the handles */
 .noUi-horizontal .noUi-handle {
     width: 20px;
     height: 20px;
@@ -411,16 +403,19 @@ nav {
     margin-right: 10px;
 }
 
-
 /* Login / Register */
 .content-section{
     width: 35%;
-    margin: 8% auto;
+    margin: 4% auto;
     padding: 40px 20px;
     border: 2px solid #dadada;
     border-radius: 10px;
     background-color: rgba(127, 127, 127, 0.02);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#login-section {
+    width: 30%;
 }
 
 #id_password1_helptext{
@@ -452,4 +447,70 @@ fieldset .form-text{
 .redirect a{
     font-size: 16px;
     margin-left: 5px;
+}
+
+/* PROFILE */
+.profile {
+    padding: 50px;
+    text-align: center;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    margin-bottom: 20px;
+}
+
+.alert {
+    width: 30%;
+    margin: 0 auto;
+}
+
+#myTab {
+    margin-top: 20px;
+}
+
+.tab-content {
+    padding: 40px 0;
+}
+
+.profile .nav-tabs{
+    width: 35%;
+    margin: 0 auto;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.order-table table{
+    margin: 0 auto;
+}
+
+.order-table td{
+    padding: 5px 30px;
+    border: 1px solid black;
+    font-size: 14px;
+}
+
+.cancel-order-btn {
+    border: none;
+    background-color: #fff;
+}
+
+.profile-form {
+    width: 35%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.profile-form li{
+    font-size: 12px;
+}
+
+.tab-content fieldset div:first-child{
+    margin: 0 auto 20px auto;
 }

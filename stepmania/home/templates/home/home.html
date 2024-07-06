@@ -1,44 +1,35 @@
 {% extends "home/base.html" %}
+{% load django_template_maths %}
 {% load static %}
 {% block content %}
 
     <section class="slider">
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
-            <ol class="carousel-indicators">
+            <div class="carousel-indicators">
                 {% for item in carousel_items %}
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active {% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter0 }}"></button>
                 {% endfor %}
-            </ol>
+            </div>
 
             <div class="carousel-inner">
                 {% for item in carousel_items %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <img class="d-block w-100" src="{{ item.image.url }}" alt="{{ item.title }}">
-                            <!--
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ item.title }}</h5>
-                            <p>{{ item.description }}</p>
-                            {% if item.link %}
-                                <a href="{{ item.link }}" class="btn btn-primary">Learn More</a>
-                            {% endif %}
-                            </div>
-                            -->
                     </div>
                 {% endfor %}
             </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M11.354 1.354a.5.5 0 0 1 0 .707L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                     <path fill-rule="evenodd" d="M6.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L12.293 8 6.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </a>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
         </div>
 
     </section>
@@ -141,4 +132,6 @@
         </div>
 
     </section>
+
+{% include 'home/footer.html' %}
 {% endblock content %}

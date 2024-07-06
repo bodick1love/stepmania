@@ -73,7 +73,6 @@
             var slider = document.getElementById('price-slider');
             var minPrice = 0;
             var maxPrice = 300;
-            var tooltips = [];
 
             noUiSlider.create(slider, {
                 start: [minPrice, maxPrice],
@@ -93,18 +92,34 @@
                 }
             });
 
-            slider.querySelectorAll('.noUi-tooltip').forEach(function(tooltip) {
-                tooltip.addEventListener('click', function() {
-                    var currentValue = this.innerHTML.trim(); // Get current tooltip value
-                    this.contentEditable = true; // Allow editing directly in the tooltip
+            function makeTooltipEditable(tooltip, idx) {
+                tooltip.contentEditable = true;
 
-                    console.log("editable")
+                tooltip.addEventListener('blur', function () {
+                    tooltip.contentEditable = false;
+
+                    let values = [null, null];
+                    values[idx] = this.innerText;
+
+                    slider.noUiSlider.set(values);
                 });
-            });
+            }
 
-            slider.noUiSlider.on('update', function() {
+            slider.noUiSlider.on('update', function (values, handle) {
+                var tooltips = slider.querySelectorAll('.noUi-tooltip');
+                tooltips.forEach(function(tooltip, idx) {
+                    if (!tooltip.isContentEditable) {
+                        tooltip.addEventListener('click', function () {
+                            makeTooltipEditable(tooltip, idx);
+                            tooltip.focus();
+                        });
+                    }
+                });
+
                 filterProducts();
             });
         });
     </script>
+
+{% include 'home/footer.html' %}
 {% endblock content %}

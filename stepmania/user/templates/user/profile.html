@@ -1,4 +1,102 @@
 {% extends "home/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h1>{{ user.username }}</h1>
+
+    <section class="profile">
+
+        <img class="avatar" src="../..{{photo.url}}">
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="home" aria-selected="true">Orders</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="change-profile-tab" data-bs-toggle="tab" data-bs-target="#change-profile-form" type="button" role="tab" aria-controls="change-profile" aria-selected="false">Change profile</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="change-password-tab" data-bs-toggle="tab" data-bs-target="#change-password-form" type="button" role="tab" aria-controls="change-password" aria-selected="false">Change password</button>
+              </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+
+            <div class="order-table tab-pane fade show active" id="orders">
+                <table>
+                    {% if orders %}
+                        <tr>
+                            <td>Shoes</td>
+                            <td>Registration date</td>
+                            <td>Address</td>
+                            <td>Delivery price</td>
+                            <td>Payment</td>
+                            <td>Cancel</td>
+                        </tr>
+                        {% for order, items in orders.items %}
+                            <tr class="order">
+                                <td>
+                                    {% for item in items %}
+                                        {{ item.model }}
+                                    {% endfor %}
+                                </td>
+                                <td>{{ order.registration_date }}</td>
+                                <td>{{ order.address }}</td>
+                                <td>{{ order.delivery_price }}</td>
+                                <td>
+                                    {% if order.payment %}
+                                        ✔️
+                                    {% else %}
+                                        ❌
+                                    {% endif %}
+                                </td>
+                                <td><button class="cancel-order-btn">❌</button></td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>
+                                Orders Not Found!
+                            </td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+
+            <div class="profile-form edit-user-form tab-pane fade" id="change-profile-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <div class="form-fields">
+                            {{ user_edit_form|crispy }}
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-info" type="submit" name="user_edit_form">Save changes</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="profile-form change-password-form tab-pane fade" id="change-password-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <div class="form-fields">
+                            {{ change_password_form|crispy }}
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-info" type="submit" name="change_password_form">Change password</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
 {% endblock content %}

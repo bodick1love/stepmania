@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_template_maths',
     'crispy_forms',
     'crispy_bootstrap5',
     'catalogue.apps.CatalogueConfig',
@@ -129,9 +130,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'catalogue'
+LOGIN_REDIRECT_URL = 'profile'
