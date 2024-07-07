@@ -1,4 +1,5 @@
 {% extends "home/base.html" %}
+{% load filters %}
 {% block content %}
     <section class="catalogue">
 
@@ -54,11 +55,11 @@
                              data-availability="{{s.availability}}"
                         >
                             <img src="../../..{{ l.image.url }}" alt="logo">
-                            <a href="">{{s.brand.name}} {{s.model}}</a>
+                            <a href="{{s.model|replace_spaces}}">{{s.brand.name}} {{s.model}}</a>
 
                             <div class="price-action">
                                 <p>{{s.price}}$</p>
-                                <button>buy</button>
+                                <button type="button" class="btn btn-dark">buy</button>
                             </div>
 
                         </div>
