@@ -1,0 +1,43 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+    <section class="item-section">
+
+        <div class="item-photos">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                        {% for img in photos %}
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="item-carousel-indicator {% if forloop.first %}active {% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter0 }}"></button>
+                        {% endfor %}
+                  </div>
+
+                  <div class="carousel-inner">
+                        {% for img in photos %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="../../{{img.url}}" class="d-block w-100" alt="...">
+                            </div>
+                        {% endfor %}
+                  </div>
+
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                  </button>
+            </div>
+        </div>
+
+        <div class="item-details">
+            <h2>{{ item.brand.name }} {{ item.model }}</h2>
+            <h3 class="item-price">{{ item.price }}$</h3>
+            <p class="item-desc">{{ item.description }}</p>
+            <button type="button" class="btn btn-dark">buy</button>
+        </div>
+
+    </section>
+
+{% include 'home/footer.html' %}
+{% endblock content %}

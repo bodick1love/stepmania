@@ -8,7 +8,9 @@
 
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %}">{{ message }}</div>
+                <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %}">
+                    {% if message.tags == 'success' %}{{ message }}{% else %}Data you entered is incorrect, somthing went wrong.{% endif %}
+                </div>
             {% endfor %}
         {% endif %}
 
@@ -27,44 +29,53 @@
         <div class="tab-content" id="myTabContent">
 
             <div class="order-table tab-pane fade show active" id="orders">
-                <table>
-                    {% if orders %}
-                        <tr>
-                            <td>Shoes</td>
-                            <td>Registration date</td>
-                            <td>Address</td>
-                            <td>Delivery price</td>
-                            <td>Payment</td>
-                            <td>Cancel</td>
-                        </tr>
-                        {% for order, items in orders.items %}
-                            <tr class="order">
+
+                <table class="table table-hover">
+                    <thead class="table-dark">
+
+                        <td>#</td>
+                        <td>Shoes</td>
+                        <td>Registration date</td>
+                        <td>Address</td>
+                        <td>Delivery price</td>
+                        <td>Payment</td>
+                        <td>Cancel</td>
+
+                    </thead>
+                    <tbody>
+                        {% if orders %}
+                            {% for order, items in orders.items %}
+                                <tr class="order">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Show models
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                {% for item in items %}
+                                                        <li><button class="dropdown-item" type="button">{{ item.model }}</button></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>{{ order.registration_date }}</td>
+                                    <td>{{ order.address }}</td>
+                                    <td>{{ order.delivery_price }}</td>
+                                    <td>{{ order.payment }}</td>
+                                    <td><button class="cancel-order-btn" data-order-id="{{order.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">❌</button></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
                                 <td>
-                                    {% for item in items %}
-                                        {{ item.model }}
-                                    {% endfor %}
+                                    Orders Not Found!
                                 </td>
-                                <td>{{ order.registration_date }}</td>
-                                <td>{{ order.address }}</td>
-                                <td>{{ order.delivery_price }}</td>
-                                <td>
-                                    {% if order.payment %}
-                                        ✔️
-                                    {% else %}
-                                        ❌
-                                    {% endif %}
-                                </td>
-                                <td><button class="cancel-order-btn">❌</button></td>
                             </tr>
-                        {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td>
-                                Orders Not Found!
-                            </td>
-                        </tr>
-                    {% endif %}
+                        {% endif %}
+                    </tbody>
                 </table>
+
             </div>
 
             <div class="profile-form edit-user-form tab-pane fade" id="change-profile-form">
@@ -97,6 +108,60 @@
 
         </div>
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                    <div class="modal-content">
+                          <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirmation window</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body text-start">
+                                Are you sure you want to delete the order? Money will not be returned.
+                          </div>
+                          <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-primary confirm-button">Yes</button>
+                          </div>
+                    </div>
+              </div>
+        </div>
+
     </section>
+
+    <script>
+
+        $(document).ready(function() {
+            function getCSRFToken() {
+                return $('meta[name="csrf-token"]').attr('content');
+            }
+
+            $('.cancel-order-btn').click(function() {
+                var orderId = $(this).data('order-id');
+
+                // Submit the form via AJAX
+                $('.confirm-button').click(function(event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '/catalogue/order',
+                        headers: {
+                            'X-CSRFToken': getCSRFToken() // Include the CSRF token
+                        },
+                        data: JSON.stringify({ 'order_id': orderId }),
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            console.error('Error:', error.toString());
+                        }
+                    });
+
+                    location.reload();
+                });
+            });
+        });
+
+    </script>
 
 {% endblock content %}

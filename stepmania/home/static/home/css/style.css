@@ -341,10 +341,6 @@ nav {
 
 .item button{
     padding: 4px 20px;
-    color: #ffffff;
-    background-color: black;
-    border: 2px solid #333333;
-    border-radius: 5px;
 }
 
 .price-action {
@@ -401,6 +397,33 @@ nav {
 
 .filter input{
     margin-right: 10px;
+}
+
+.catalogue .form-fields div:first-child {
+    margin-top: 0;
+}
+
+.catalogue .form-fields div:first-child {
+    margin-top: 0;
+}
+
+.catalogue .modal-body {
+    padding: 0;
+}
+
+.catalogue fieldset {
+    padding: 30px 20px;
+    border-bottom: 1px solid #DEE2E6;
+}
+
+.modal-btns {
+    display: flex;
+    justify-content: right;
+    margin: 20px 20px 20px 0;
+}
+
+.modal-btns button {
+    margin: 0 10px;
 }
 
 /* Login / Register */
@@ -475,7 +498,11 @@ fieldset .form-text{
     padding: 40px 0;
 }
 
-.profile .nav-tabs{
+.tab-pane {
+    transition: all 0.2s;
+}
+
+.profile .nav-tabs {
     width: 35%;
     margin: 0 auto;
 }
@@ -486,19 +513,18 @@ fieldset .form-text{
     cursor: pointer;
 }
 
-.order-table table{
+#orders {
+    width: 80%;
     margin: 0 auto;
 }
 
-.order-table td{
-    padding: 5px 30px;
-    border: 1px solid black;
-    font-size: 14px;
+#orders td {
+    vertical-align: middle;
 }
 
 .cancel-order-btn {
     border: none;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .profile-form {
@@ -507,10 +533,69 @@ fieldset .form-text{
     text-align: left;
 }
 
-.profile-form li{
+.profile-form li {
     font-size: 12px;
 }
 
-.tab-content fieldset div:first-child{
+.tab-content fieldset div:first-child {
     margin: 0 auto 20px auto;
+}
+
+.dropdown-menu {
+    transition: all 0.2s;
+}
+
+/* Item */
+.item-section {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-photos .carousel {
+    height: 350px;
+    width: 500px;
+}
+
+.item-photos .carousel-control-prev {
+    left: -15%; /* Adjust left position for previous button */
+}
+
+.item-photos .carousel-control-next {
+    right: -15%; /* Adjust right position for next button */
+}
+
+.item-photos .carousel-control-prev-icon, .item-photos .carousel-control-next-icon {
+    filter: invert(1);  /* Invert icon color to black */
+}
+
+.item-photos .carousel-indicators {
+    bottom: -5%;
+}
+
+.item-photos .carousel-indicators button{
+    background-color: grey;
+    width: 10px;
+    height: 10px;
+}
+
+.item-carousel-indicator {
+    border-radius: 50%;
+}
+
+.item-photos img {
+    border-radius: 50px;
+}
+
+.item-details {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-desc {
+    margin: 20px 0 40px 0;
 }

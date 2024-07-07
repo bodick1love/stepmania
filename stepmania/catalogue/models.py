@@ -26,20 +26,25 @@ class Shoes(models.Model):
     description = models.TextField(max_length=300)
 
     def __str__(self):
-        return f'{self.brand} | {self.category} | Model: {self.model} | Price: {self.price}$ | ' \
+        return f'ID: {self.id} | {self.brand} | {self.category} | Model: {self.model} | Price: {self.price}$ | ' \
                f'Availability: {self.availability} | Description: {self.description}'
 
 
 class Order(models.Model):
+    PAYMENT_CHOICES = [
+        ('Cash', 'Cash'),
+        ('Card', 'Card'),
+    ]
+
     client = models.ForeignKey(User, on_delete=models.CASCADE)
     registration_date = models.DateTimeField(default=timezone.now)
     address = models.CharField(max_length=100, null=False)
-    payment = models.BooleanField(null=False)
+    payment = models.CharField(max_length=4, choices=PAYMENT_CHOICES, default='Cash')
     delivery_price = models.FloatField(null=False)
 
     def __str__(self):
-        return f'Order for: {self.client} | Date: {self.registration_date} | Address: {self.address} | ' \
-               f'Payment: {"YES" if self.payment == True else "NO"} | Delivery price: {self.delivery_price}'
+        return f'ID: {self.id} | Order for: {self.client} | Date: {self.registration_date} | Address: {self.address} | ' \
+               f'Payment: {self.payment} | Delivery price: {self.delivery_price}'
 
 
 class OrderAndShoes(models.Model):
@@ -47,7 +52,7 @@ class OrderAndShoes(models.Model):
     shoes = models.ForeignKey(Shoes, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return f'Shoes: {self.shoes.model} are in order: {self.order.address}'
+        return f'Shoes: {self.shoes.model} are in order: {self.order.id}'
 
 
 class ShoesPhoto(models.Model):

@@ -70,3 +70,13 @@ function filterProducts() {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselControls = document.querySelectorAll('.carousel-control-prev, .carousel-control-next');
+
+    carouselControls.forEach(function (control) {
+        control.addEventListener('click', function () {
+            this.blur(); // Remove focus after click
+        });
+    });
+});

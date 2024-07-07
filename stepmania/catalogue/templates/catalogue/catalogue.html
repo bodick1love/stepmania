@@ -1,4 +1,7 @@
 {% extends "home/base.html" %}
+{% load filters %}
+{% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
     <section class="catalogue">
 
@@ -51,19 +54,46 @@
                              data-category="{{s.category.name}}"
                              data-brand="{{s.brand.name}}"
                              data-price="{{s.price}}"
-                             data-availability="{{s.availability}}"
-                        >
+                             data-availability="{{s.availability}}">
+
                             <img src="../../..{{ l.image.url }}" alt="logo">
-                            <a href="">{{s.brand.name}} {{s.model}}</a>
+                            <a href="{{s.model|replace_spaces}}">{{s.brand.name}} {{s.model}}</a>
 
                             <div class="price-action">
                                 <p>{{s.price}}$</p>
-                                <button>buy</button>
+                                <button type="button" class="buy-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-item-id="{{s.id}}">buy</button>
                             </div>
 
                         </div>
                 
                 {% endfor %}
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                        <div class="modal-content">
+                              <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirmation window</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-start">
+                                    <form id="itemForm" method="POST" action="{% url 'order' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="item_id" id="itemIdInput">
+                                        <fieldset class="form-group">
+                                            <div class="form-fields">
+                                                {{ form|crispy }}
+                                            </div>
+                                        </fieldset>
+                                        <div class="modal-btns">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Place order</button>
+                                        </div>
+                                    </form>
+                              </div>
+
+                        </div>
+                  </div>
             </div>
 
     </section>
@@ -117,6 +147,37 @@
                 });
 
                 filterProducts();
+            });
+        });
+
+        $(document).ready(function() {
+            $('.buy-button').click(function() {
+                var itemId = $(this).data('item-id');
+                $('#itemIdInput').val(itemId); // Set the value to the hidden input field in the form
+
+                // Submit the form via AJAX
+                $('#itemForm').submit(function(event) {
+                    event.preventDefault(); // Prevent the default form submission
+                    var form = $(this);
+                    var formData = form.serialize(); // Serialize form data
+                    var url = form.attr('action'); // Get the form action URL
+
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: formData,
+                        success: function(response) {
+                            // Handle success response if needed
+                            console.log(response);
+                        },
+                        error: function(error) {
+                            // Handle error response if needed
+                            console.error('Error:', error.toString());
+                        }
+                    });
+
+                    $('#exampleModal').modal('hide');
+                });
             });
         });
     </script>

@@ -5,7 +5,7 @@
 
     <section class="slider">
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" class="item-photos-carousel carousel slide" data-bs-ride="carousel">
 
             <div class="carousel-indicators">
                 {% for item in carousel_items %}
@@ -48,7 +48,7 @@
 
                             <div class="price-action">
                                 <p>{{s.price}}$</p>
-                                <button>buy</button>
+                                <button type="button" class="btn btn-dark">buy</button>
                             </div>
 
                         </div>
