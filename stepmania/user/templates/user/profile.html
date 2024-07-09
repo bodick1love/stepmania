@@ -54,7 +54,7 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 {% for item in items %}
-                                                        <li><button class="dropdown-item" type="button">{{ item.model }}</button></li>
+                                                        <li><button class="dropdown-item" type="button">{{ item.brand.name }} {{ item.model }}</button></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>

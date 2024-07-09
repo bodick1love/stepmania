@@ -2,6 +2,7 @@ from django.db.models import Count
 from django.shortcuts import render
 from .models import CarouselItem
 from catalogue.models import Shoes, OrderAndShoes, ShoesPhoto
+from catalogue.forms import OrderForm
 
 
 def home(request):
@@ -22,6 +23,7 @@ def home(request):
     context = {
         'carousel_items': carousel_items,
         'bestsellers': bestsellers,
+        'form': OrderForm,
     }
 
     return render(request, 'home/home.html', context=context)

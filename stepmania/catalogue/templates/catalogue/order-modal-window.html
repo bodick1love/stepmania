@@ -1,0 +1,27 @@
+{% load crispy_forms_tags %}
+<div class="modal fade order-modal-window" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation window</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                <form id="itemForm" method="POST" action="{% url 'order' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" id="itemIdInput">
+                    <fieldset class="form-group">
+                        <div class="form-fields">
+                            {{ form|crispy }}
+                        </div>
+                    </fieldset>
+                    <div class="modal-btns">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Place order</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

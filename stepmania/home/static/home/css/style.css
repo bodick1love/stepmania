@@ -334,13 +334,17 @@ nav {
     text-decoration: underline;
 }
 
-.item p{
+.item p {
     font-weight: bold;
     margin: 0;
 }
 
-.item button{
+.item button {
     padding: 4px 20px;
+}
+
+.item .add-to-cart {
+    padding: 4px 10px;
 }
 
 .price-action {
@@ -399,19 +403,17 @@ nav {
     margin-right: 10px;
 }
 
-.catalogue .form-fields div:first-child {
+
+/* Order Modal Window */
+.order-modal-window .form-fields div:first-child {
     margin-top: 0;
 }
 
-.catalogue .form-fields div:first-child {
-    margin-top: 0;
-}
-
-.catalogue .modal-body {
+.order-modal-window .modal-body {
     padding: 0;
 }
 
-.catalogue fieldset {
+.order-modal-window fieldset {
     padding: 30px 20px;
     border-bottom: 1px solid #DEE2E6;
 }
@@ -598,4 +600,29 @@ fieldset .form-text{
 
 .item-desc {
     margin: 20px 0 40px 0;
+}
+
+/* Cart */
+.card-body .row {
+    margin-bottom: 0;
+}
+
+.delete-order-btn {
+    border: none;
+    background-color: transparent;
+    color: #666666;
+}
+
+.quantity-btn {
+    color: #666666;
+}
+
+.back-to-shop {
+    text-decoration: none;
+    color: #666666;
+    font-weight: bold;
+}
+
+.back-to-shop:hover {
+    text-decoration: underline;
 }

@@ -6,7 +6,20 @@ import json
 from django.http import HttpResponse
 
 
-def product(request, model):
+def catalogue(request):
+    shoes = Shoes.objects.all()
+    logo = [ShoesPhoto.objects.filter(shoes=shoes[i])[0] for i in range(len(shoes))]
+    context = {
+        "categories": Category.objects.all(),
+        "brands": Brand.objects.all(),
+        "shoes_logo": zip(shoes, logo),
+        "max_price": max([s.price for s in shoes]),
+        "form": OrderForm,
+    }
+    return render(request, 'catalogue/catalogue.html', context)
+
+
+def shoes(request, model):
     shoes = get_object_or_404(Shoes, model=model.replace("-", " "))
     shoes_photos = ShoesPhoto.objects.filter(shoes=shoes).all()
 
@@ -25,7 +38,7 @@ class OrderView(View):
         form = OrderForm(data, user=request.user)
         if form.is_valid():
             order = form.save(commit=False)
-            order.delivery_price = 10.0
+            order.delivery_price = 5.0
             order.save()
 
             connection = OrderAndShoes(order=order, shoes=Shoes.objects.filter(id=data['item_id']).first())
@@ -44,16 +57,3 @@ class OrderView(View):
         order.delete()
 
         return HttpResponse(f"Order {order_id} cancelled successfully", content_type="text/plain")
-
-
-def catalogue(request):
-    shoes = Shoes.objects.all()
-    logo = [ShoesPhoto.objects.filter(shoes=shoes[i])[0] for i in range(len(shoes))]
-    context = {
-        "categories": Category.objects.all(),
-        "brands": Brand.objects.all(),
-        "shoes_logo": zip(shoes, logo),
-        "max_price": max([s.price for s in shoes]),
-        "form": OrderForm,
-    }
-    return render(request, 'catalogue/catalogue.html', context)

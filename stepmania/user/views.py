@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import update_session_auth_hash
-from django.db.models import Prefetch
-from .forms import UserRegisterForm, UserEditForm, ChangePasswordForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Prefetch, F
 from django.contrib import messages
-from .models import Profile
-from catalogue.models import Order, Shoes, OrderAndShoes
+from django.http import HttpResponse
+from .forms import UserRegisterForm, UserEditForm, ChangePasswordForm
+from .models import Profile, Cart, CartAndShoes
+from catalogue.models import Order, Shoes, OrderAndShoes, ShoesPhoto
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -32,7 +34,7 @@ class ProfileView(LoginRequiredMixin, View):
             else:
                 messages.error(request, 'Please correct the error below.')
 
-        return self.get(request)  # Re-render the page with the updated context
+        return self.get(request)
 
     def get(self, request):
         current_user = request.user
@@ -75,3 +77,47 @@ class RegisterView(View):
             return redirect('login')
         else:
             return render(request, self.template_name, {'form': form})
+
+
+class CartView(LoginRequiredMixin, View):
+    template_name = "user/cart.html"
+
+    def get(self, request):
+        current_user = request.user
+        cart, create = Cart.objects.get_or_create(user=current_user)
+
+        shoes = Shoes.objects.filter(cartandshoes__cart=cart).annotate(quantity=F('cartandshoes__quantity'))
+
+        photos = [ShoesPhoto.objects.filter(shoes=item).first() for item in shoes]
+
+        context = {
+            'num_items': sum([item.quantity for item in shoes]),
+            'total_price': sum([item.price * item.quantity for item in shoes]),
+            'cart_items_and_photos': zip(shoes, photos),
+        }
+
+        return render(request, self.template_name, context=context)
+
+
+class CartAndShoesView(View):
+    def post(self, request, shoes_id):
+        shoes = get_object_or_404(Shoes, id=shoes_id)
+        cart, created = Cart.objects.get_or_create(user=request.user)
+
+        cart_and_shoes, created = CartAndShoes.objects.get_or_create(cart=cart, shoes=shoes)
+        if not created:
+            cart_and_shoes.quantity += 1
+        cart_and_shoes.save()
+
+        return HttpResponse(f"Product {shoes.id} was successfully added to cart {cart.id}", content_type="text/plain")
+
+    def delete(self, request, shoes_id):
+        cart = get_object_or_404(Cart, user=request.user)
+
+        cart_and_shoes = get_object_or_404(CartAndShoes, cart=cart, shoes=Shoes.objects.filter(id=shoes_id).first())
+        cart_and_shoes.delete()
+
+        return HttpResponse(f"Product {shoes_id} was successfully deleted from cart {cart.id}", content_type="text/plain")
+
+    def put(self, request, shoes_id):
+        pass
