@@ -50,6 +50,7 @@ class Order(models.Model):
 class OrderAndShoes(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, default=1)
     shoes = models.ForeignKey(Shoes, on_delete=models.CASCADE, default=1)
+    quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return f'Shoes: {self.shoes.model} are in order: {self.order.id}'

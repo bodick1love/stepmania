@@ -77,6 +77,20 @@ function filterProducts() {
 }
 
 
+function decreaseQuantity(button) {
+    var input = button.parentNode.querySelector('input');
+    input.stepDown();
+    $(input).trigger('change');
+}
+
+
+function increaseQuantity (button) {
+    var input = button.parentNode.querySelector('input');
+    input.stepUp();
+    $(input).trigger('change');
+}
+
+
 function redirectToLoginPage() {
     window.location.replace("/login");
 }
@@ -94,16 +108,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 $(document).ready(function() {
+    // Order
     $('.buy-button').click(function() {
         var itemId = $(this).data('item-id');
         $('#itemIdInput').val(itemId); // Set the value to the hidden input field in the form
 
         // Submit the form via AJAX
-        $('#itemForm').submit(function(event) {
+        $('#orderForm').submit(function(event) {
             event.preventDefault(); // Prevent the default form submission
             var form = $(this);
             var formData = form.serialize(); // Serialize form data
-            var url = form.attr('action'); // Get the form action URL
+            var url = "/catalogue/order/"; // Get the form action URL
 
             $.ajax({
                 type: 'POST',
@@ -121,6 +136,32 @@ $(document).ready(function() {
         });
     });
 
+    $('.cancel-order-btn').click(function() {
+        var orderId = $(this).data('order-id');
+
+        // Submit the form via AJAX
+        $('.confirm-button').click(function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'DELETE',
+                url: '/catalogue/order',
+                headers: {
+                    'X-CSRFToken': getCSRFToken() // Include the CSRF token
+                },
+                data: JSON.stringify({ 'order_id': orderId }),
+                success: function(response) {
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(error) {
+                    console.error('Error:', error.toString());
+                }
+            });
+        });
+    });
+
+    // Cart
     $('.add-to-cart').click(function() {
         var shoesId = $(this).data('shoes-id');
 
@@ -139,7 +180,7 @@ $(document).ready(function() {
         });
     });
 
-    $('.delete-order-btn').click(function(){
+    $('.delete-from-cart').click(function(){
         var shoesId = $(this).data('shoes-id');
 
         $.ajax({
@@ -156,5 +197,51 @@ $(document).ready(function() {
                 console.log('Failed to remove item');
             }
         });
+    });
+
+    $('.item-quantity').on('change', function() {
+        var shoesId = $(this).data('shoes-id');
+        var newQuantity = parseInt($(this).val(), 10);
+
+        $.ajax({
+            url: `/user/cart-and-shoes/${shoesId}/`,
+            method: 'PUT',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
+            },
+            data: JSON.stringify({
+                quantity: newQuantity,
+            }),
+            contentType: "application/json",
+            success: function(data) {
+                console.log('Item updated in cart');
+                window.location.reload();
+            },
+            error: function(error) {
+                console.log('Failed to update item');
+            }
+        });
+    });
+
+    $('.cart #orderForm').submit(function(event) {
+        event.preventDefault();
+        var form = $(this);
+        var formData = form.serialize();
+        var url = "/user/cart/";
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function(response) {
+                console.log(response);
+                window.location.replace("/user/profile/");
+            },
+            error: function(error) {
+                console.error('Error:', error.toString());
+            }
+        });
+
+        $('#exampleModal').modal('hide');
     });
 });

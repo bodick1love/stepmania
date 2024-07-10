@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from .forms import UserRegisterForm, UserEditForm, ChangePasswordForm
 from .models import Profile, Cart, CartAndShoes
 from catalogue.models import Order, Shoes, OrderAndShoes, ShoesPhoto
+from catalogue.forms import OrderForm
+import json
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -40,18 +42,23 @@ class ProfileView(LoginRequiredMixin, View):
         current_user = request.user
         profile = current_user.profile
 
-        user_orders = Order.objects.filter(client=current_user)
-        user_orders = user_orders.prefetch_related(
-            Prefetch('orderandshoes_set__shoes', queryset=Shoes.objects.all())
+        # Prefetch related shoes for all user orders in one query
+        user_orders = Order.objects.filter(client=current_user).prefetch_related(
+            Prefetch('orderandshoes_set', queryset=OrderAndShoes.objects.select_related('shoes'))
         )
 
-        orders = {
-            order: [order_and_shoes.shoes for order_and_shoes in order.orderandshoes_set.all()] for order in user_orders
-        }
+        # Build orders dictionary with annotated shoes quantities
+        orders = {}
+        for order in user_orders:
+            annotated_shoes = [
+                (order_and_shoes.shoes, order_and_shoes.quantity)
+                for order_and_shoes in order.orderandshoes_set.all()
+            ]
+            orders[order] = annotated_shoes
 
         context = {
-            'orders': orders,
             'photo': profile.image,
+            'orders': orders,
             'user_edit_form': UserEditForm(instance=current_user),
             'change_password_form': ChangePasswordForm(user=current_user)
         }
@@ -82,7 +89,7 @@ class RegisterView(View):
 class CartView(LoginRequiredMixin, View):
     template_name = "user/cart.html"
 
-    def get(self, request):
+    def get(self, request, form=OrderForm):
         current_user = request.user
         cart, create = Cart.objects.get_or_create(user=current_user)
 
@@ -94,9 +101,38 @@ class CartView(LoginRequiredMixin, View):
             'num_items': sum([item.quantity for item in shoes]),
             'total_price': sum([item.price * item.quantity for item in shoes]),
             'cart_items_and_photos': zip(shoes, photos),
+            'form': form,
         }
 
         return render(request, self.template_name, context=context)
+
+    def post(self, request):
+        cart = Cart.objects.filter(user=request.user).first()
+
+        data = request.POST.copy()
+        form = OrderForm(data, user=request.user)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.delivery_price = 5.0
+            order.save()
+
+            shoes = Shoes.objects.filter(cartandshoes__cart=cart).annotate(quantity=F('cartandshoes__quantity'))
+
+            for item in shoes:
+                connection = OrderAndShoes(order=order, shoes=Shoes.objects.filter(id=item.id).first(), quantity=item.quantity)
+                connection.save()
+
+            self.delete(request)
+
+            return HttpResponse("Order place successfully")
+        else:
+            return self.get(request, form)
+
+    def delete(self, request):
+        cart = get_object_or_404(Cart, user=request.user)
+        cart.delete()
+
+        return HttpResponse(f"{request.user}'s cart deleted successfully")
 
 
 class CartAndShoesView(View):
@@ -120,4 +156,15 @@ class CartAndShoesView(View):
         return HttpResponse(f"Product {shoes_id} was successfully deleted from cart {cart.id}", content_type="text/plain")
 
     def put(self, request, shoes_id):
-        pass
+        cart_and_shoes = get_object_or_404(CartAndShoes, cart__user=request.user, shoes_id=shoes_id)
+
+        data = json.loads(request.body)
+        new_quantity = data.get('quantity')
+
+        if new_quantity == 0:
+            return self.delete(request, shoes_id)
+        else:
+            cart_and_shoes.quantity = new_quantity
+            cart_and_shoes.save()
+
+            return HttpResponse(f"Shoes {shoes_id} quantity was successfully updated", content_type="text/plain")
