@@ -34,8 +34,18 @@
             <h2>{{ item.brand.name }} {{ item.model }}</h2>
             <h3 class="item-price">{{ item.price }}$</h3>
             <p class="item-desc">{{ item.description }}</p>
-            <button type="button" class="btn btn-dark">buy</button>
+            <div>
+                {% if user.is_authenticated %}
+                    <button type="button" class="buy-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-item-id="{{s.id}}">buy</button>
+                    <button class="add-to-cart btn btn-dark" type="submit" data-shoes-id="{{ item.id }}">+</button>
+                {% else %}
+                    <button class="btn btn-dark" onclick="redirectToLoginPage()">buy</button>
+                    <button class="btn btn-dark" onclick="redirectToLoginPage()">+</button>
+                {% endif %}
+            </div>
         </div>
+
+        {% include 'catalogue/order-modal-window.html' %}
 
     </section>
 

@@ -37,13 +37,15 @@ class Order(models.Model):
     ]
 
     client = models.ForeignKey(User, on_delete=models.CASCADE)
+    total_price = models.FloatField(null=False, default=1000)
     registration_date = models.DateTimeField(default=timezone.now)
     address = models.CharField(max_length=100, null=False)
     payment = models.CharField(max_length=4, choices=PAYMENT_CHOICES, default='Cash')
     delivery_price = models.FloatField(null=False)
 
     def __str__(self):
-        return f'ID: {self.id} | Order for: {self.client} | Date: {self.registration_date} | Address: {self.address} | ' \
+        return f'ID: {self.id} | Order for: {self.client} | Total price: ${self.total_price} | ' \
+               f'Date: {self.registration_date} | Address: {self.address} | ' \
                f'Payment: {self.payment} | Delivery price: {self.delivery_price}'
 
 

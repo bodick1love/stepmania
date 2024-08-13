@@ -39,31 +39,12 @@
         <h1 class="title">Our bestsellers</h1>
 
         <div class="showcase">
-                {% for s, l in bestsellers %}
+            {% for shoes, photo in bestsellers %}
+                {% include 'catalogue/item.html' with item=shoes logo=photo %}
+            {% endfor %}
+        </div>
 
-                    {% if s.availability %}
-                        <div class="item">
-                            <img src="../..{{ l.image.url }}" alt="logo">
-                            <a href="">{{s.brand.name}} {{s.model}}</a>
-
-                            <div class="price-action">
-                                <p>{{s.price}}$</p>
-                                {% if user.is_authenticated %}
-                                    <button type="button" class="buy-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-item-id="{{s.id}}">buy</button>
-                                {% else %}
-                                    <button type="button" class="btn btn-dark" onclick="redirectToLoginPage()">buy</button>
-                                {% endif %}
-                                <button class="add-to-cart btn btn-dark" type="submit" data-shoes-id="{{ s.id }}">+</button>
-                            </div>
-
-                        </div>
-                    {% endif %}
-
-                {% endfor %}
-
-                {% include 'catalogue/order-modal-window.html' %}
-
-            </div>
+        {% include 'catalogue/order-modal-window.html' %}
 
     </section>
 

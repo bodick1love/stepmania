@@ -108,6 +108,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 $(document).ready(function() {
+    let toastTimeout;
+    let buttonDisableTimeout;
+
+
     // Order
     $('.buy-button').click(function() {
         var itemId = $(this).data('item-id');
@@ -118,7 +122,7 @@ $(document).ready(function() {
             event.preventDefault(); // Prevent the default form submission
             var form = $(this);
             var formData = form.serialize(); // Serialize form data
-            var url = "/catalogue/order/"; // Get the form action URL
+            var url = "/catalogue/order"; // Get the form action URL
 
             $.ajax({
                 type: 'POST',
@@ -135,6 +139,7 @@ $(document).ready(function() {
             $('#exampleModal').modal('hide');
         });
     });
+
 
     $('.cancel-order-btn').click(function() {
         var orderId = $(this).data('order-id');
@@ -164,15 +169,30 @@ $(document).ready(function() {
     // Cart
     $('.add-to-cart').click(function() {
         var shoesId = $(this).data('shoes-id');
+        var button = $(this);
+
+        clearTimeout(buttonDisableTimeout);
+        buttonDisableTimeout = setTimeout(function() {
+            button.data('disabled', false);  // Re-enable the button after 2 seconds
+            button.removeClass('disabled-button');  // Remove the disabled styling
+        }, 2000);
+
+        if (button.data('disabled')) {
+            showToastMessage('Wait a second before adding one more item', 'warning');
+            return;
+        }
+
+        // Disable the button immediately
+        button.data('disabled', true);
 
         $.ajax({
-            url: `/user/cart-and-shoes/${shoesId}/`,
+            url: `/user/cart-and-shoes/${shoesId}`,
             method: 'POST',
             data: {
                 'csrfmiddlewaretoken': getCSRFToken()
             },
-            success: function(data) {
-                console.log('Item added to cart');
+            success: function(response) {
+                showToastMessage(response);
             },
             error: function(error) {
                 console.log('Failed to add item to cart');
@@ -180,11 +200,12 @@ $(document).ready(function() {
         });
     });
 
+
     $('.delete-from-cart').click(function(){
         var shoesId = $(this).data('shoes-id');
 
         $.ajax({
-            url: `/user/cart-and-shoes/${shoesId}/`,
+            url: `/user/cart-and-shoes/${shoesId}`,
             method: 'DELETE',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
@@ -199,12 +220,13 @@ $(document).ready(function() {
         });
     });
 
+
     $('.item-quantity').on('change', function() {
         var shoesId = $(this).data('shoes-id');
         var newQuantity = parseInt($(this).val(), 10);
 
         $.ajax({
-            url: `/user/cart-and-shoes/${shoesId}/`,
+            url: `/user/cart-and-shoes/${shoesId}`,
             method: 'PUT',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
@@ -223,11 +245,12 @@ $(document).ready(function() {
         });
     });
 
+
     $('.cart #orderForm').submit(function(event) {
         event.preventDefault();
         var form = $(this);
         var formData = form.serialize();
-        var url = "/user/cart/";
+        var url = "/user/cart";
 
         $.ajax({
             type: 'POST',
@@ -235,7 +258,7 @@ $(document).ready(function() {
             data: formData,
             success: function(response) {
                 console.log(response);
-                window.location.replace("/user/profile/");
+                window.location.replace("/user/profile");
             },
             error: function(error) {
                 console.error('Error:', error.toString());
@@ -244,4 +267,31 @@ $(document).ready(function() {
 
         $('#exampleModal').modal('hide');
     });
+
+
+    function showToastMessage(message, type = 'success') {
+        const toast = $('#toast-message');
+
+        // Clear previous timeout if it exists
+        clearTimeout(toastTimeout);
+
+        // Remove previous classes and add new class based on type
+        toast.removeClass('toast-success toast-warning');
+        if (type === 'success') {
+            toast.addClass('toast-success');
+        } else if (type === 'warning') {
+            toast.addClass('toast-warning');
+        }
+
+        toast.text(message);
+        toast.show().css('opacity', '1');  // Show the toast with opacity
+
+        // Set timeout for hiding the toast
+        toastTimeout = setTimeout(function() {
+            toast.css('opacity', '0');  // Start fade-out transition
+            setTimeout(function() {
+                toast.hide();  // Hide the toast after fade-out transition
+            }, 500);  // Match the fade-out duration
+        }, 2000);  // Duration the toast stays visible
+    }
 });

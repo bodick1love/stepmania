@@ -100,23 +100,26 @@ class CartView(LoginRequiredMixin, View):
         context = {
             'num_items': sum([item.quantity for item in shoes]),
             'total_price': sum([item.price * item.quantity for item in shoes]),
-            'cart_items_and_photos': zip(shoes, photos),
+            'cart_items_and_photos': list(zip(shoes, photos)),
             'form': form,
         }
 
         return render(request, self.template_name, context=context)
 
     def post(self, request):
-        cart = Cart.objects.filter(user=request.user).first()
+        current_user = request.user
+        cart = get_object_or_404(Cart, user=current_user)
 
         data = request.POST.copy()
-        form = OrderForm(data, user=request.user)
+        form = OrderForm(data, user=current_user)
         if form.is_valid():
+            shoes = Shoes.objects.filter(cartandshoes__cart=cart).annotate(quantity=F('cartandshoes__quantity'))
+            shoes_price = sum(item.price * item.quantity for item in shoes)
+
             order = form.save(commit=False)
             order.delivery_price = 5.0
+            order.total_price = shoes_price + order.delivery_price
             order.save()
-
-            shoes = Shoes.objects.filter(cartandshoes__cart=cart).annotate(quantity=F('cartandshoes__quantity'))
 
             for item in shoes:
                 connection = OrderAndShoes(order=order, shoes=Shoes.objects.filter(id=item.id).first(), quantity=item.quantity)
@@ -145,7 +148,8 @@ class CartAndShoesView(View):
             cart_and_shoes.quantity += 1
         cart_and_shoes.save()
 
-        return HttpResponse(f"Product {shoes.id} was successfully added to cart {cart.id}", content_type="text/plain")
+        return HttpResponse(f"Product {shoes.brand.name} {shoes.model} was successfully added to your "
+                            f"cart", content_type="text/plain")
 
     def delete(self, request, shoes_id):
         cart = get_object_or_404(Cart, user=request.user)

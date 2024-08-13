@@ -18,7 +18,8 @@
                   </div>
                   <hr class="my-4">
 
-                    {% for item, photo in cart_items_and_photos %}
+                    {% if cart_items_and_photos %}
+                      {% for item, photo in cart_items_and_photos %}
                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                             <div class="col-md-2 col-lg-2 col-xl-2">
                               <img
@@ -45,7 +46,7 @@
                             </div>
 
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6 class="mb-0">{{ item.price }}$</h6>
+                              <h6 class="mb-0">${{ item.price }}</h6>
                             </div>
 
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
@@ -55,7 +56,11 @@
                           </div>
 
                         <hr class="my-4">
-                    {% endfor %}
+                      {% endfor %}
+                    {% else %}
+                      <h3>Your cart is empty now</h3>
+                    {% endif %}
+
 
                     <div class="pt-5">
                       <h6 class="mb-0">
@@ -77,14 +82,14 @@
 
                   <div class="d-flex justify-content-between mb-4">
                     <h5 class="text-uppercase">items {{ num_items }}</h5>
-                    <h5>$ {{ total_price }}</h5>
+                    <h5>${{ total_price }}</h5>
                   </div>
 
                   <h5 class="text-uppercase mb-3">Shipping</h5>
 
                   <div class="mb-4 pb-2">
                     <select class="form-select">
-                      <option value="1">Standard-Delivery- €5.00</option>
+                      <option value="1">Standard-Delivery- $5.00</option>
                       <option value="2">Two</option>
                       <option value="3">Three</option>
                       <option value="4">Four</option>
@@ -95,7 +100,7 @@
 
                   <div class="d-flex justify-content-between mb-5">
                     <h5 class="text-uppercase">Total price</h5>
-                    <h5>$ {{ total_price|add:5.0 }}</h5>
+                    <h5>${{ total_price|add:5.0 }}</h5>
                   </div>
 
                   <button type="button" class="buy-button btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">Place order</button>

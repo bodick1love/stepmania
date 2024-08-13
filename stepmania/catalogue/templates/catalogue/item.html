@@ -1,0 +1,22 @@
+{% load filters %}
+<div class="item {% if not s.availability %}unavailable{% endif %}"
+     data-category="{{item.category.name}}"
+     data-brand="{{item.brand.name}}"
+     data-price="{{item.price}}"
+     data-availability="{{item.availability}}">
+
+     <img src="../../..{{ photo.image.url }}" alt="logo">
+     <a href="{{item.model|replace_spaces}}">{{item.brand.name}} {{item.model}}</a>
+
+     <div class="price-action">
+         <p>${{item.price}}</p>
+         {% if user.is_authenticated %}
+            <button type="button" class="buy-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-item-id="{{item.id}}">buy</button>
+            <button class="add-to-cart btn btn-dark" data-shoes-id="{{ item.id }}">+</button>
+         {% else %}
+            <button type="button" class="btn btn-dark" onclick="redirectToLoginPage()">buy</button>
+            <button class="btn btn-dark" onclick="redirectToLoginPage()">+</button>
+         {% endif %}
+     </div>
+
+</div>

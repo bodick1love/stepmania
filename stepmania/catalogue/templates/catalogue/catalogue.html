@@ -1,5 +1,4 @@
 {% extends "home/base.html" %}
-{% load filters %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -48,29 +47,8 @@
             <div class="vertical-separator" id="vertical-separator-1"></div>
 
             <div class="items">
-                {% for s, l in shoes_logo %}
-
-                        <div class="item {% if not s.availability %}{{unavailable}}{% endif %}"
-                             data-category="{{s.category.name}}"
-                             data-brand="{{s.brand.name}}"
-                             data-price="{{s.price}}"
-                             data-availability="{{s.availability}}">
-
-                            <img src="../../..{{ l.image.url }}" alt="logo">
-                            <a href="{{s.model|replace_spaces}}">{{s.brand.name}} {{s.model}}</a>
-
-                            <div class="price-action">
-                                <p>{{s.price}}$</p>
-                                {% if user.is_authenticated %}
-                                    <button type="button" class="buy-button btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-item-id="{{s.id}}">buy</button>
-                                {% else %}
-                                    <button type="button" class="btn btn-dark" onclick="redirectToLoginPage()">buy</button>
-                                {% endif %}
-                                <button class="add-to-cart btn btn-dark" type="submit" data-shoes-id="{{ s.id }}">+</button>
-                            </div>
-
-                        </div>
-                
+                {% for shoes, photo in shoes %}
+                    {% include 'catalogue/item.html' with item=shoes logo=photo %}
                 {% endfor %}
             </div>
 
