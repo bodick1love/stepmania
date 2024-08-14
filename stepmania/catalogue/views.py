@@ -1,20 +1,25 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Order, Brand, Category, Shoes, ShoesPhoto, OrderAndShoes
 from django.views import View
+from django.http import HttpResponse
+from django.db.models import Q
+from .models import Order, Brand, Category, Shoes, ShoesPhoto, OrderAndShoes
 from .forms import OrderForm
 import json
-from django.http import HttpResponse
 
 
 def catalogue(request):
-    shoes = Shoes.objects.all()
+    search = request.GET.get('search') or ''
+
+    shoes = Shoes.objects.filter(Q(model__icontains=search) | Q(brand__name__icontains=search))
+
     logo = [ShoesPhoto.objects.filter(shoes=shoes[i])[0] for i in range(len(shoes))]
 
     context = {
         "categories": Category.objects.all(),
         "brands": Brand.objects.all(),
         "shoes": zip(shoes, logo),
-        "max_price": max([s.price for s in shoes]),
+        # "max_price": max([s.price for s in shoes]),
+        "search": search,
         "form": OrderForm,
     }
 
@@ -49,9 +54,9 @@ class OrderView(View):
             connection = OrderAndShoes(order=order, shoes=shoes)
             connection.save()
 
-            return redirect('profile')
+            return HttpResponse(f'Order for {shoes.brand.name} {shoes.model} was placed successfully!')
 
-        return redirect('catalogue')
+        return HttpResponse('Something went wrong!', status=200)
 
     def delete(self, request):
         body_unicode = request.body.decode('utf-8')

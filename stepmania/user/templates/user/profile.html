@@ -63,7 +63,7 @@
                                     <td>${{ order.total_price }}</td>
                                     <td>{{ order.registration_date }}</td>
                                     <td>{{ order.address }}</td>
-                                    <td>{{ order.delivery_price }}</td>
+                                    <td>${{ order.delivery_price }}</td>
                                     <td>{{ order.payment }}</td>
                                     <td><button class="cancel-order-btn" data-order-id="{{order.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">❌</button></td>
                                 </tr>

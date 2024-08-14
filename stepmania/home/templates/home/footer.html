@@ -1,10 +1,11 @@
 {% load static %}
 <footer>
 
-    <div class="feedback">
-        <input type="text" placeholder="leave your feedback" class="input-field">
-        <button class="submit-button">Submit</button>
-    </div>
+    <form class="feedback-form" action="{% url 'feedback' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="leave your feedback" class="input-field" name="feedback-text">
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
 
     <div class="info">
 

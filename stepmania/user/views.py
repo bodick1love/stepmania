@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Prefetch, F
 from django.contrib import messages
 from django.http import HttpResponse
 from .forms import UserRegisterForm, UserEditForm, ChangePasswordForm
-from .models import Profile, Cart, CartAndShoes
+from .models import Profile, Cart, CartAndShoes, Feedback
 from catalogue.models import Order, Shoes, OrderAndShoes, ShoesPhoto
 from catalogue.forms import OrderForm
 import json
@@ -172,3 +173,17 @@ class CartAndShoesView(View):
             cart_and_shoes.save()
 
             return HttpResponse(f"Shoes {shoes_id} quantity was successfully updated", content_type="text/plain")
+
+
+class FeedbackView(View):
+    def post(self, request):
+        feedback_text = request.POST.get('feedback-text')
+        if len(feedback_text) > 10:
+            current_user = request.user if request.user.is_authenticated else User.objects.get(username='unknown')
+
+            feedback = Feedback(user=current_user, text=feedback_text)
+            feedback.save()
+
+            return HttpResponse("Feedback placed successfully!")
+        else:
+            return HttpResponse("Your feedback is incorrect!", status=400)

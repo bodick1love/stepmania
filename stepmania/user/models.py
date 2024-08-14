@@ -25,3 +25,11 @@ class CartAndShoes(models.Model):
 
     def __str__(self):
         return f'There are {self.quantity} {self.shoes.brand.name} {self.shoes.model} in {self.cart.id} cart'
+
+
+class Feedback(models.Model):
+    user = models.ForeignKey(User, default=User.objects.get(username='unknown').id, on_delete=models.SET_DEFAULT)
+    text = models.TextField()
+
+    def __str__(self):
+        return f'User {self.user.username} left feedback: {self.text}'

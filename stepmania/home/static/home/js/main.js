@@ -122,14 +122,14 @@ $(document).ready(function() {
             event.preventDefault(); // Prevent the default form submission
             var form = $(this);
             var formData = form.serialize(); // Serialize form data
-            var url = "/catalogue/order"; // Get the form action URL
+            var url = "/catalogue/order/"; // Get the form action URL
 
             $.ajax({
                 type: 'POST',
                 url: url,
                 data: formData,
                 success: function(response) {
-                    console.log(response);
+                    showToastMessage(response);
                 },
                 error: function(error) {
                     console.error('Error:', error.toString());
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: 'DELETE',
-                url: '/catalogue/order',
+                url: '/catalogue/order/',
                 headers: {
                     'X-CSRFToken': getCSRFToken() // Include the CSRF token
                 },
@@ -186,7 +186,7 @@ $(document).ready(function() {
         button.data('disabled', true);
 
         $.ajax({
-            url: `/user/cart-and-shoes/${shoesId}`,
+            url: `/user/cart-and-shoes/${shoesId}/`,
             method: 'POST',
             data: {
                 'csrfmiddlewaretoken': getCSRFToken()
@@ -205,7 +205,7 @@ $(document).ready(function() {
         var shoesId = $(this).data('shoes-id');
 
         $.ajax({
-            url: `/user/cart-and-shoes/${shoesId}`,
+            url: `/user/cart-and-shoes/${shoesId}/`,
             method: 'DELETE',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
@@ -226,7 +226,7 @@ $(document).ready(function() {
         var newQuantity = parseInt($(this).val(), 10);
 
         $.ajax({
-            url: `/user/cart-and-shoes/${shoesId}`,
+            url: `/user/cart-and-shoes/${shoesId}/`,
             method: 'PUT',
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-CSRFToken", getCSRFToken());
@@ -250,7 +250,7 @@ $(document).ready(function() {
         event.preventDefault();
         var form = $(this);
         var formData = form.serialize();
-        var url = "/user/cart";
+        var url = "/user/cart/";
 
         $.ajax({
             type: 'POST',
@@ -258,7 +258,7 @@ $(document).ready(function() {
             data: formData,
             success: function(response) {
                 console.log(response);
-                window.location.replace("/user/profile");
+                window.location.replace("/user/profile/");
             },
             error: function(error) {
                 console.error('Error:', error.toString());
@@ -266,6 +266,30 @@ $(document).ready(function() {
         });
 
         $('#exampleModal').modal('hide');
+    });
+
+
+    $('.feedback-form').submit(function (event) {
+        event.preventDefault();
+
+        var form = $(this);
+        var formData = form.serialize();
+        var url = "/user/feedback/";
+
+        form[0].reset();
+        window.scrollTo(0, 0);
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function(response) {
+                showToastMessage(response);
+            },
+            error: function(error) {
+                showToastMessage(error.responseText, 'warning');
+            }
+        });
     });
 
 

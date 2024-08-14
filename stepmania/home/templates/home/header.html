@@ -8,20 +8,22 @@
         </ul>
     </nav>
     <div class="commerce">
-        <div class="search-field">
-            <img src="{% static 'home/img/loupe.png' %}" alt="img">
-            <input type="text" placeholder="search" class="input-field">
-        </div>
+        <form action="{% url 'catalogue' %}" method="get" class="search-field">
+            <button type="submit">
+                <img src="{% static 'home/img/loupe.png' %}" alt="img">
+            </button>
+            <input type="text" name="search" placeholder="search" class="input-field" value="{{search}}">
+        </form>
         {% if user.is_authenticated %}
             <a href="{% url 'cart' %}">
-                <img src="{% static 'home/img/cart.png' %}" alt="img">
+                <img id="cart-img" src="{% static 'home/img/cart.png' %}" alt="img">
             </a>
             <a href="{% url 'profile' %}">
                 <img src="{% static 'home/img/user.png' %}" alt="img">
             </a>
         {% else %}
             <a href="{% url 'login' %}">
-                <img src="{% static 'home/img/cart.png' %}" alt="img">
+                <img id="cart-img" src="{% static 'home/img/cart.png' %}" alt="img">
             </a>
             <a href="{% url 'login' %}">
                 <img src="{% static 'home/img/user.png' %}" alt="img">
