@@ -2,7 +2,7 @@
 
 1. Clone the repository:
    ```
-   git clone github.com/bodick1love/stepmania
+   git clone (https://github.com/bodick1love/stepmania
    ```
    
 2. Create a virtual environment:
@@ -19,26 +19,15 @@
      ```
      source venv/bin/activate
      ```
-
-4. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
    
-5. Navigate into the project directory:
+4. Navigate into the project directory:
    ```
    cd stepmania
    ```
-   
-6. Apply migrations:
+
+5. Install dependencies:
    ```
-   python manage.py migrate
-   ```
-   
-7. Create a superuser (admin):
-   ```
-   python manage.py createsuperuser
-   ```
+   pip install -r requirements.txt
    
 8. Run the development server:
    ```
