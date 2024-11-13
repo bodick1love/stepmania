@@ -28,7 +28,8 @@ class CartAndShoes(models.Model):
 
 
 class Feedback(models.Model):
-    user = models.ForeignKey(User, default=User.objects.get(username='unknown').id, on_delete=models.SET_DEFAULT)
+    # user = models.ForeignKey(User, default=User.objects.get(username='unknown').id, on_delete=models.SET_DEFAULT)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
 
     def __str__(self):
