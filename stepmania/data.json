@@ -1,0 +1,1786 @@
+[
+{
+    "model": "catalogue.brand",
+    "pk": 1,
+    "fields": {
+        "name": "Adidas"
+    }
+},
+{
+    "model": "catalogue.brand",
+    "pk": 2,
+    "fields": {
+        "name": "Nike"
+    }
+},
+{
+    "model": "catalogue.brand",
+    "pk": 3,
+    "fields": {
+        "name": "New Balance"
+    }
+},
+{
+    "model": "catalogue.brand",
+    "pk": 4,
+    "fields": {
+        "name": "Converse"
+    }
+},
+{
+    "model": "catalogue.category",
+    "pk": 1,
+    "fields": {
+        "name": "Sport"
+    }
+},
+{
+    "model": "catalogue.category",
+    "pk": 2,
+    "fields": {
+        "name": "Running"
+    }
+},
+{
+    "model": "catalogue.category",
+    "pk": 3,
+    "fields": {
+        "name": "Walking"
+    }
+},
+{
+    "model": "catalogue.shoes",
+    "pk": 1,
+    "fields": {
+        "brand": 1,
+        "category": 3,
+        "model": "Yeezy Boost 350",
+        "price": 249.99,
+        "availability": true,
+        "description": "Introducing the Adidas Yeezy Boost 350, a true icon of modern sneaker culture. Created in collaboration with Kanye West, these sneakers seamlessly blend cutting-edge design with unrivaled comfort. Elevate your style to new heights with this coveted addition to the Yeezy lineup"
+    }
+},
+{
+    "model": "catalogue.shoes",
+    "pk": 2,
+    "fields": {
+        "brand": 2,
+        "category": 3,
+        "model": "Air Force 1",
+        "price": 120.0,
+        "availability": false,
+        "description": "A classic basketball-inspired sneaker known for its clean and versatile design. The Air Force 1 has been a staple in sneaker culture for decades."
+    }
+},
+{
+    "model": "catalogue.shoes",
+    "pk": 3,
+    "fields": {
+        "brand": 1,
+        "category": 1,
+        "model": "Ultra Boost",
+        "price": 180.0,
+        "availability": true,
+        "description": "Renowned for its comfort and stylish design, the Ultra Boost features a responsive Boost midsole and a sleek, breathable Primeknit upper."
+    }
+},
+{
+    "model": "catalogue.shoes",
+    "pk": 4,
+    "fields": {
+        "brand": 2,
+        "category": 1,
+        "model": "Air Jordan 1",
+        "price": 160.0,
+        "availability": true,
+        "description": "Originally designed for basketball legend Michael Jordan, the Air Jordan 1 has become an iconic and highly sought-after sneaker in the sneakerhead community"
+    }
+},
+{
+    "model": "catalogue.shoes",
+    "pk": 5,
+    "fields": {
+        "brand": 4,
+        "category": 3,
+        "model": "Chuck Taylor All Star",
+        "price": 60.0,
+        "availability": true,
+        "description": "A timeless classic, the Chuck Taylor All Star has been a popular choice for casual wear since the early 20th century. Its simple canvas design and distinctive rubber toe cap have made it an enduring favorite."
+    }
+},
+{
+    "model": "catalogue.orderandshoes",
+    "pk": 47,
+    "fields": {
+        "order": 44,
+        "shoes": 1,
+        "quantity": 3
+    }
+},
+{
+    "model": "catalogue.orderandshoes",
+    "pk": 48,
+    "fields": {
+        "order": 44,
+        "shoes": 5,
+        "quantity": 1
+    }
+},
+{
+    "model": "catalogue.orderandshoes",
+    "pk": 49,
+    "fields": {
+        "order": 44,
+        "shoes": 4,
+        "quantity": 2
+    }
+},
+{
+    "model": "catalogue.orderandshoes",
+    "pk": 51,
+    "fields": {
+        "order": 46,
+        "shoes": 1,
+        "quantity": 1
+    }
+},
+{
+    "model": "catalogue.shoesphoto",
+    "pk": 2,
+    "fields": {
+        "image": "shoes_photo/yeezy350.jpg",
+        "shoes": 1
+    }
+},
+{
+    "model": "catalogue.shoesphoto",
+    "pk": 3,
+    "fields": {
+        "image": "shoes_photo/air-force-1.png",
+        "shoes": 2
+    }
+},
+{
+    "model": "catalogue.shoesphoto",
+    "pk": 4,
+    "fields": {
+        "image": "shoes_photo/ultra-boost.jpg",
+        "shoes": 3
+    }
+},
+{
+    "model": "catalogue.shoesphoto",
+    "pk": 5,
+    "fields": {
+        "image": "shoes_photo/air-jordan.jpg",
+        "shoes": 4
+    }
+},
+{
+    "model": "catalogue.shoesphoto",
+    "pk": 6,
+    "fields": {
+        "image": "shoes_photo/all-star.jpg",
+        "shoes": 5
+    }
+},
+{
+    "model": "catalogue.shoesphoto",
+    "pk": 7,
+    "fields": {
+        "image": "shoes_photo/shopping.png",
+        "shoes": 1
+    }
+},
+{
+    "model": "home.carouselitem",
+    "pk": 1,
+    "fields": {
+        "title": "summer sale",
+        "description": "lorem ipsum",
+        "image": "carousel_items/sale_banner.jpg"
+    }
+},
+{
+    "model": "home.carouselitem",
+    "pk": 3,
+    "fields": {
+        "title": "nightmode banner",
+        "description": "lorem ipsum",
+        "image": "carousel_items/nightmode_banner.jpg"
+    }
+},
+{
+    "model": "home.carouselitem",
+    "pk": 4,
+    "fields": {
+        "title": "hyperfuse banner",
+        "description": "lorem ipsum",
+        "image": "carousel_items/hyperfuse_banner.jpg"
+    }
+},
+{
+    "model": "user.cartandshoes",
+    "pk": 44,
+    "fields": {
+        "shoes": 1,
+        "cart": 7,
+        "quantity": 2
+    }
+},
+{
+    "model": "user.cartandshoes",
+    "pk": 45,
+    "fields": {
+        "shoes": 3,
+        "cart": 7,
+        "quantity": 1
+    }
+},
+{
+    "model": "user.cartandshoes",
+    "pk": 52,
+    "fields": {
+        "shoes": 4,
+        "cart": 7,
+        "quantity": 3
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$0il6CNn01nyiVmM92Xtxvs$jGT1rjr1q4MrRpIMkyoSeqblzolGG1NORfabkS2Es9A=",
+        "last_login": "2024-08-23T13:46:33.912Z",
+        "is_superuser": true,
+        "username": "b_yarema",
+        "first_name": "",
+        "last_name": "",
+        "email": "yarema9556@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-01-05T11:15:30.315Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$nyXP533rOA6EXOgpay2uOT$rMC1ppmJc9Q3xkA1x+kKLlXoyerTLzcAyHwXlV0CAgg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "unknown",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-08-14T13:35:21.358Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1olp6ye9c2uw4om2tx9oa4kv2484p0m5",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBIZSgu3XsGMswMUjWQlHbVeHdt0oVu_3vvbyriupS4dpnjxOqirDr9bgnpKXUH_MB6b5paXeYp6V3RB-361lhe18P9OyjYy7f2BofkkRIxEltgzqOIZ_CCzkEwyWVrKMDovbUAQ85CIGTOjiQ4Ue8PGhM5AQ:1rrcEg:zUadLEAevN4x5-tWsCgpTibFmipm3YbFNK1AL4gLHuQ",
+        "expire_date": "2024-04-16T11:23:26.948Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2p0aqmw1gkieln6msrljym6d08haazgo",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCg7WBduu8ZyDAzSNVAUtqV8e7apAvd_vfef6mA25rD1mQJM6uLsur0u0Wkh5Qd8B3LrWqqZV3mqHdFH7TpqbI8r4f7d5Cx5W9NgGTYprOJRpJ4gL5nI9Y61xtHyUdLPHiCSA5gAEzdyGzs6LHrRknq_QHxazgj:1shUcb:SbeXLHNjOT185ljzO8nRN0XulQZO0W4fx1ZUxZNJEU4",
+        "expire_date": "2024-09-06T13:46:33.915Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "e23mzs98ija45rxj4c95glekx8rbzf1i",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBIZSgu3XsGMswMUjWQlHbVeHdt0oVu_3vvbyriupS4dpnjxOqirDr9bgnpKXUH_MB6b5paXeYp6V3RB-361lhe18P9OyjYy7f2BofkkRIxEltgzqOIZ_CCzkEwyWVrKMDovbUAQ85CIGTOjiQ4Ue8PGhM5AQ:1rcv0w:xTmDDhdstonxAqA8NpxdLS6NYnCEW8WfN8eR71W6Pu8",
+        "expire_date": "2024-03-06T22:24:30.340Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "h4t7sqln1mh9fc6w6tjsjv8b1n8e20hj",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBIZSgu3XsGMswMUjWQlHbVeHdt0oVu_3vvbyriupS4dpnjxOqirDr9bgnpKXUH_MB6b5paXeYp6V3RB-361lhe18P9OyjYy7f2BofkkRIxEltgzqOIZ_CCzkEwyWVrKMDovbUAQ85CIGTOjiQ4Ue8PGhM5AQ:1rX00D:7_Nkb0kr95adWwgmrZslFHgs2Y7xRRVaQW5bKt3mL64",
+        "expire_date": "2024-02-19T14:31:17.016Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "iukwm5lps6igoavckkjbei27y3usvuri",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBIZSgu3XsGMswMUjWQlHbVeHdt0oVu_3vvbyriupS4dpnjxOqirDr9bgnpKXUH_MB6b5paXeYp6V3RB-361lhe18P9OyjYy7f2BofkkRIxEltgzqOIZ_CCzkEwyWVrKMDovbUAQ85CIGTOjiQ4Ue8PGhM5AQ:1rM6jO:kNnrmsD_wSXEHoVq_bgcGsnWsK0hnLdkf0g0Di7spqA",
+        "expire_date": "2024-01-20T13:28:54.527Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "v48dpefbnz91slo99i11zpjfj1m1kerx",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCg7WBduu8ZyDAzSNVAUtqV8e7apAvd_vfef6mA25rD1mQJM6uLsur0u0Wkh5Qd8B3LrWqqZV3mqHdFH7TpqbI8r4f7d5Cx5W9NgGTYprOJRpJ4gL5nI9Y61xtHyUdLPHiCSA5gAEzdyGzs6LHrRknq_QHxazgj:1sRAV7:YStRQV7ZE4rutaepguL-o7Ryvryb8URayVJNZtHnkDU",
+        "expire_date": "2024-07-23T13:03:21.088Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "zod9ibwld7iybk7t01au7hwo72cateda",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCg7WBduu8ZyDAzSNVAUtqV8e7apAvd_vfef6mA25rD1mQJM6uLsur0u0Wkh5Qd8B3LrWqqZV3mqHdFH7TpqbI8r4f7d5Cx5W9NgGTYprOJRpJ4gL5nI9Y61xtHyUdLPHiCSA5gAEzdyGzs6LHrRknq_QHxazgj:1sdmNR:OgwyO4A9fFy0_8ZhiT7YsnR-scvhBTYBoxm7TATpqcc",
+        "expire_date": "2024-08-27T07:55:33.946Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2024-01-05T11:23:09.330Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "test",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2024-01-05T11:23:25.225Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "test",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2024-01-05T13:13:24.973Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "brand"
+        ],
+        "object_id": "1",
+        "object_repr": "Brand: Adidas;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2024-01-05T13:13:31.653Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "brand"
+        ],
+        "object_id": "2",
+        "object_repr": "Brand: Nike;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2024-01-05T13:13:36.822Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "brand"
+        ],
+        "object_id": "3",
+        "object_repr": "Brand: New Balance;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2024-01-05T13:13:47.858Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "Category: Sport;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2024-01-05T13:14:31.144Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "category"
+        ],
+        "object_id": "2",
+        "object_repr": "Category: Running;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2024-01-05T13:14:53.425Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "category"
+        ],
+        "object_id": "3",
+        "object_repr": "Category: Walking;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2024-01-05T13:16:13.656Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "1",
+        "object_repr": "Brand: Adidas;\n Category: Sport;\n Model: Yeezy Boost 350;\n Price: 249.99;\nAvailability: True;\n Description: Introducing the Adidas Yeezy Boost 350, a true icon of modern sneaker culture. Created in co",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2024-01-05T13:16:30.312Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "1",
+        "object_repr": "Brand: Adidas;\n Category: Sport;\n Model: Yeezy Boost 350;\n Price: 249.99;\nAvailability: True;\n Description: Introducing the Adidas Yeezy Boost 350, a true icon of modern sneaker culture. Created in co",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2024-01-05T13:16:51.275Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "1",
+        "object_repr": "Brand: Adidas;\n Category: Sport;\n Model: Yeezy Boost 350;\n Price: 249.99;\nAvailability: True;\n Description: Introducing the Adidas Yeezy Boost 350, a true icon of modern sneaker culture. Created in co",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2024-01-05T13:17:50.942Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "1",
+        "object_repr": "Brand: Adidas;\n Category: Walking;\n Model: Yeezy Boost 350;\n Price: 249.99$;\nAvailability: True;\n Description: Introducing the Adidas Yeezy Boost 350, a true icon of modern sneaker culture. Created in",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2024-02-05T14:35:37.998Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "1",
+        "object_repr": "ShoesPhoto object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2024-02-05T14:36:54.548Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "1",
+        "object_repr": "ShoesPhoto object (1)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2024-02-05T14:37:07.947Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "2",
+        "object_repr": "ShoesPhoto object (2)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2024-02-05T16:25:08.472Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "2",
+        "object_repr": "Brand: Nike;\n Category: Walking;\n Model: Air Force 1;\n Price: 120.0$;\nAvailability: True;\n Description: A classic basketball-inspired sneaker known for its clean and versatile design. The Air Force 1 ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2024-02-05T16:25:38.290Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "3",
+        "object_repr": "Brand: Adidas;\n Category: Sport;\n Model: Ultra Boost;\n Price: 180.0$;\nAvailability: True;\n Description: Renowned for its comfort and stylish design, the Ultra Boost features a responsive Boost midsole",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2024-02-05T16:26:11.016Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "4",
+        "object_repr": "Brand: Nike;\n Category: Sport;\n Model: Air Jordan 1;\n Price: 160.0$;\nAvailability: True;\n Description: Originally designed for basketball legend Michael Jordan, the Air Jordan 1 has become an iconic a",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2024-02-05T16:26:33.422Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "brand"
+        ],
+        "object_id": "4",
+        "object_repr": "Brand: Converse;",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2024-02-05T16:27:04.579Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "5",
+        "object_repr": "Brand: Adidas;\n Category: Sport;\n Model: Chuck Taylor All Star;\n Price: 60.0$;\nAvailability: True;\n Description: A timeless classic, the Chuck Taylor All Star has been a popular choice for casual wear",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2024-02-05T16:29:05.262Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "3",
+        "object_repr": "ShoesPhoto object (3)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2024-02-05T16:29:36.081Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "5",
+        "object_repr": "Brand: Converse;\n Category: Walking;\n Model: Chuck Taylor All Star;\n Price: 60.0$;\nAvailability: True;\n Description: A timeless classic, the Chuck Taylor All Star has been a popular choice for casual ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Brand\", \"Category\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2024-02-05T16:30:52.488Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "4",
+        "object_repr": "ShoesPhoto object (4)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2024-02-05T16:32:52.367Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "5",
+        "object_repr": "ShoesPhoto object (5)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2024-02-05T16:33:27.202Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "6",
+        "object_repr": "ShoesPhoto object (6)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2024-02-06T13:05:40.179Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "5",
+        "object_repr": "Brand: Converse;\n Category: Walking;\n Model: Chuck Taylor All Star;\n Price: 60.0$;\nAvailability: False;\n Description: A timeless classic, the Chuck Taylor All Star has been a popular choice for casual",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2024-02-06T13:05:53.369Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "2",
+        "object_repr": "Brand: Nike;\n Category: Walking;\n Model: Air Force 1;\n Price: 120.0$;\nAvailability: False;\n Description: A classic basketball-inspired sneaker known for its clean and versatile design. The Air Force 1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2024-02-06T13:06:02.966Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "5",
+        "object_repr": "Brand: Converse;\n Category: Walking;\n Model: Chuck Taylor All Star;\n Price: 60.0$;\nAvailability: True;\n Description: A timeless classic, the Chuck Taylor All Star has been a popular choice for casual ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2024-02-06T13:06:08.318Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "2",
+        "object_repr": "Brand: Nike;\n Category: Walking;\n Model: Air Force 1;\n Price: 120.0$;\nAvailability: True;\n Description: A classic basketball-inspired sneaker known for its clean and versatile design. The Air Force 1 ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2024-06-20T08:25:47.997Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "home",
+            "carouselitem"
+        ],
+        "object_id": "1",
+        "object_repr": "summer sale",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2024-06-20T09:09:03.905Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "home",
+            "carouselitem"
+        ],
+        "object_id": "2",
+        "object_repr": "nike",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2024-06-20T12:31:10.053Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "home",
+            "carouselitem"
+        ],
+        "object_id": "3",
+        "object_repr": "nightmode banner",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2024-06-20T12:33:46.844Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "home",
+            "carouselitem"
+        ],
+        "object_id": "2",
+        "object_repr": "nike",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2024-06-20T12:35:07.654Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "home",
+            "carouselitem"
+        ],
+        "object_id": "4",
+        "object_repr": "hyperfuse banner",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2024-06-21T14:28:24.052Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "1",
+        "object_repr": "test\n Date: 2024-06-21 14:28:10+00:00\n Address: тєы. ╩юЁюы№ютр, 75\nPayment: YES\n Delivery price: 10.0",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2024-06-21T14:29:25.690Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "orderandshoes"
+        ],
+        "object_id": "1",
+        "object_repr": "OrderAndShoes object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2024-06-21T14:31:53.259Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "orderandshoes"
+        ],
+        "object_id": "2",
+        "object_repr": "Shoes: Ultra Boost are in order: тєы. ╩юЁюы№ютр, 75",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2024-06-24T13:22:25.740Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "5",
+        "object_repr": "Brand: Converse;\n Category: Walking;\n Model: Chuck Taylor All Star;\n Price: 60.0$;\nAvailability: False;\n Description: A timeless classic, the Chuck Taylor All Star has been a popular choice for casual",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2024-06-24T13:32:03.337Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "5",
+        "object_repr": "Brand: Converse;\n Category: Walking;\n Model: Chuck Taylor All Star;\n Price: 60.0$;\nAvailability: True;\n Description: A timeless classic, the Chuck Taylor All Star has been a popular choice for casual ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2024-06-24T13:32:14.334Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoes"
+        ],
+        "object_id": "2",
+        "object_repr": "Brand: Nike;\n Category: Walking;\n Model: Air Force 1;\n Price: 120.0$;\nAvailability: False;\n Description: A classic basketball-inspired sneaker known for its clean and versatile design. The Air Force 1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Availability\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2024-07-01T11:28:04.878Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "2",
+        "object_repr": "b_yarema\n Date: 2024-07-01 11:27:41+00:00\n Address: тєы. ╩юЁюы№ютр 75\nPayment: YES\n Delivery price: 5.0",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2024-07-01T11:30:51.396Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "orderandshoes"
+        ],
+        "object_id": "3",
+        "object_repr": "Shoes: Yeezy Boost 350 are in order: тєы. ╩юЁюы№ютр 75",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2024-07-01T12:15:35.233Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "user",
+            "profile"
+        ],
+        "object_id": "1",
+        "object_repr": "b_yarema profile",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2024-07-02T08:31:52.305Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "user",
+            "profile"
+        ],
+        "object_id": "2",
+        "object_repr": "test1 profile",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2024-07-02T08:36:06.294Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "user",
+            "profile"
+        ],
+        "object_id": "2",
+        "object_repr": "test1 profile",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2024-07-06T13:44:47.782Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "fdsfdsffsdf",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2024-07-06T13:45:02.241Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "test",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2024-07-06T13:45:05.902Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "test1",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2024-07-06T13:45:09.074Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "test2",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2024-07-06T13:45:22.395Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "test_user",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2024-07-06T13:45:27.719Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "volodya_zelenskiy",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2024-07-07T11:20:03.783Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "shoesphoto"
+        ],
+        "object_id": "7",
+        "object_repr": "ShoesPhoto object (7)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2024-07-08T11:15:00.460Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "2",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-01 11:27:41+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: NO | Delivery price: 5.0",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Payment\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2024-07-08T13:49:32.202Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "3",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 12:40:37.807222+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2024-07-08T13:49:34.814Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "4",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:37:13.244791+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2024-07-08T13:49:38.558Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "5",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:40:02.065775+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2024-07-08T13:49:41.047Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "6",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:40:32.590118+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2024-07-08T13:49:43.558Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "7",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:44:24.746508+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2024-07-08T13:49:46.121Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "8",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:44:24.749504+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2024-07-08T13:49:48.445Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "9",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:45:50.832669+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2024-07-08T13:49:50.650Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "10",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:46:05.032200+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2024-07-08T13:49:52.939Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "11",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:46:41.438960+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2024-07-08T13:49:55.197Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "12",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:47:47.453076+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2024-07-08T13:49:57.754Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "13",
+        "object_repr": "Order for: b_yarema | Date: 2024-07-08 13:48:46.222366+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2024-07-08T13:56:21.179Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "14",
+        "object_repr": "ID: 14 | Order for: b_yarema | Date: 2024-07-08 13:50:15.877355+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2024-07-08T13:56:23.723Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "15",
+        "object_repr": "ID: 15 | Order for: b_yarema | Date: 2024-07-08 13:51:07.326196+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2024-07-08T13:56:25.998Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "17",
+        "object_repr": "ID: 17 | Order for: b_yarema | Date: 2024-07-08 13:54:05.061204+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2024-07-08T13:56:28.224Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "16",
+        "object_repr": "ID: 16 | Order for: b_yarema | Date: 2024-07-08 13:52:31.618338+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2024-07-08T13:56:30.693Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "18",
+        "object_repr": "ID: 18 | Order for: b_yarema | Date: 2024-07-08 13:54:05.062201+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2024-07-08T13:56:33.178Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "19",
+        "object_repr": "ID: 19 | Order for: b_yarema | Date: 2024-07-08 13:54:22.687334+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2024-07-08T13:56:35.465Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "21",
+        "object_repr": "ID: 21 | Order for: b_yarema | Date: 2024-07-08 13:54:22.688320+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2024-07-08T13:56:37.979Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "20",
+        "object_repr": "ID: 20 | Order for: b_yarema | Date: 2024-07-08 13:54:22.685372+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2024-07-08T13:56:40.456Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "22",
+        "object_repr": "ID: 22 | Order for: b_yarema | Date: 2024-07-08 13:54:50.066140+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2024-07-08T13:56:42.802Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "order"
+        ],
+        "object_id": "23",
+        "object_repr": "ID: 23 | Order for: b_yarema | Date: 2024-07-08 13:55:04.266426+00:00 | Address: тєы. ╩юЁюы№ютр 75 | Payment: Cash | Delivery price: 10.0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2024-07-08T13:57:39.206Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "orderandshoes"
+        ],
+        "object_id": "15",
+        "object_repr": "Shoes: Yeezy Boost 350 are in order: 2",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2024-07-08T13:57:41.615Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "catalogue",
+            "orderandshoes"
+        ],
+        "object_id": "3",
+        "object_repr": "Shoes: Yeezy Boost 350 are in order: 2",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2024-08-14T14:29:07.724Z",
+        "user": [
+            "b_yarema"
+        ],
+        "content_type": [
+            "user",
+            "feedback"
+        ],
+        "object_id": "2",
+        "object_repr": "User b_yarema left feedback: var form = $(this);",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "user.feedback",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "b_yarema"
+        ],
+        "text": "I'm pretty sure you're best providers of shoes."
+    }
+},
+{
+    "model": "user.cart",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "b_yarema"
+        ],
+        "created_at": "2024-08-13T08:54:46.771Z",
+        "updated_at": "2024-08-13T08:54:46.771Z"
+    }
+},
+{
+    "model": "user.profile",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "b_yarema"
+        ],
+        "image": "user_images/maxresdefault.jpg"
+    }
+},
+{
+    "model": "catalogue.order",
+    "pk": 44,
+    "fields": {
+        "client": [
+            "b_yarema"
+        ],
+        "total_price": 1134.97,
+        "registration_date": "2024-08-13T08:54:26.944Z",
+        "address": "тєы. ╫юЁэютюыр",
+        "payment": "Cash",
+        "delivery_price": 5.0
+    }
+},
+{
+    "model": "catalogue.order",
+    "pk": 46,
+    "fields": {
+        "client": [
+            "b_yarema"
+        ],
+        "total_price": 249.99,
+        "registration_date": "2024-08-14T13:46:40.059Z",
+        "address": "тєы. ╫юЁэютюыр",
+        "payment": "Cash",
+        "delivery_price": 5.0
+    }
+}
+]
