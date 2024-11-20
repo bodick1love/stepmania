@@ -1,0 +1,13 @@
+__pycache__/
+
+# Ignore virtual environment
+venv/
+
+# Ignore environment variable files
+.env
+
+# Ignore IDE files
+.idea/
+
+# Ignore staticfiles
+stepmania/staticfiles/*
